@@ -58,6 +58,7 @@ cp config/secrets.yml.example config/secrets.yml
 bin/rake db:create
 bin/rake db:migrate
 bin/rake db:dev_seed
+bin/rake db:custom_seed
 RAILS_ENV=test rake db:setup
 ```
 
