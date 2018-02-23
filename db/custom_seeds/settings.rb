@@ -3,6 +3,7 @@ section "Creating custom Settings" do
   Setting['place_name'] = 'Aude'
 
   # Feature flags
+  Setting['feature.articles'] = true
   Setting['feature.debates'] = true
   Setting['feature.proposals'] = true
   Setting['feature.spending_proposals'] = nil
@@ -12,7 +13,7 @@ section "Creating custom Settings" do
   Setting['feature.facebook_login'] = true
   Setting['feature.google_login'] = true
   Setting['feature.public_stats'] = true
-  Setting['feature.budgets'] = true
+  Setting['feature.budgets'] = nil
   Setting['feature.signature_sheets'] = true
   Setting['feature.legislation'] = nil
   Setting['feature.user.recommendations'] = true
