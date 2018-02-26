@@ -42,8 +42,10 @@ Voir la [page dédiée sur le site du département](https://www.aude.fr/670-cons
 
 ### Traductions
 
-* Les traductions sont personalisées pour le CDJ uniquement dans le dossier `config/locales/custom/'. Ces fichiers sont prioritaires sur tous les autres.
-* Les traductions standard `fr` de Consul peuvent être importées depuis `upstream` ou depuis [Crowdin](https://crowdin.com/project/consul/fr#) pour venir écraser les traductions existantes dans `config/locales/fr/`
+* Les traductions sont personalisées pour le CDJ uniquement dans le dossier `config/locales/custom/'
+  * ces fichiers sont prioritaires sur tous les autres
+  * seules les clés à personaliser sont conservées dans ces fichiers
+* Les traductions officielles `fr` de Consul peuvent être importées depuis `upstream` ou depuis [Crowdin](https://crowdin.com/project/consul/fr#) pour venir écraser les traductions existantes dans `config/locales/fr/`
 
 ## Déploiements
 
