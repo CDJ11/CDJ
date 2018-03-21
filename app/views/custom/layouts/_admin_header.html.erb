@@ -33,10 +33,16 @@
       <div id="responsive_menu">
 
         <div class="top-bar-right">
-          <ul class="menu" data-responsive-menu="medium-dropdown">
+          <ul class="menu hide-for-small-only" data-responsive-menu="medium-dropdown">
             <%= render "admin/shared/admin_shortcuts" %>
             <%= render "shared/admin_login_items" %>
             <%= render "devise/menu/login_items" %>
+          </ul>
+
+          <ul class="menu show-for-small-only subnavigation subnavigation-sm" data-responsive-menu="medium-dropdown">
+            <%= render "admin/shared/admin_shortcuts_sm" %>
+            <%= render "shared/admin_login_items_sm" %>
+            <%= render "devise/menu/login_items_sm" %>
           </ul>
         </div>
 
