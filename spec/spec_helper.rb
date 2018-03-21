@@ -42,6 +42,7 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
     I18n.locale = :en
     load Rails.root.join('db', 'seeds.rb').to_s
+    load Rails.root.join('db', 'custom_seeds.rb').to_s
   end
 
   config.before(:each, type: :feature) do
