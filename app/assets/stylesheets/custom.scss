@@ -1,5 +1,9 @@
 // Overrides and adds customized styles in this file
 
+///////////////////////////////////////
+// HEADER
+///////////////////////////////////////
+
 .top-bar {
   //height: 8.5rem;
   .top-bar-title {
@@ -12,18 +16,20 @@
     }
   }
   .top-bar-right {
-    margin-top: 2rem;
-    .menu {
-      .login a {
-        margin-top: 1.3rem;
-      }
-      .signup {
-        text-align: right;
-      }
-      li {
-        a {
-          font-size: 1.3rem;
-          padding: 1rem;
+    @include breakpoint(medium) {
+      margin-top: 2rem;
+      .menu {
+        .login a {
+          margin-top: 1.3rem;
+        }
+        .signup {
+          text-align: right;
+        }
+        li {
+          a {
+            font-size: 1.3rem;
+            padding: 1rem;
+          }
         }
       }
     }
@@ -40,5 +46,51 @@
       width: 100%;
       text-align: center;
     }
+  }
+}
+
+$subnavigation-sm-btn-width: 130px;
+
+.subnavigation.subnavigation-sm {
+  padding-right: 0;
+  .columns:last-child {
+    float: left;
+  }
+  li {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    a {
+      width: $subnavigation-sm-btn-width;
+      height: $subnavigation-sm-btn-width;
+      padding: .5rem;
+      background-color: $dark;
+      box-shadow: 0px 1px 3px #444444;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      line-height: normal;
+      transition: all 0.4s;
+      &:hover {
+        background-color: darken($dark, 5%);
+      }
+    }
+    img {
+      height: calc(128px - 2em);
+      width: auto;
+    }
+  }
+
+}
+
+.notifications .icon-circle {
+  font-size: 1.625rem;
+  right: -10px;
+  top: -10px;
+  left: auto;
+  @include breakpoint(medium) {
+    font-size: 0.625rem;
+    left: 12px;
+    top: 6px;
+    right: auto;
   }
 }
