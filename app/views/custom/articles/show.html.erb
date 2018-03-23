@@ -19,9 +19,9 @@
       </div>
 
       <%# if @article.external_url.present? %>
-        <div class="document-link">
+        <!-- <div class="document-link"> -->
           <%# text_with_links @article.external_url %>
-        </div>
+        <!-- </div> -->
       <%# end %>
 
       <%= safe_html_with_links @article.content.html_safe %>
@@ -32,7 +32,7 @@
       <%= render partial: 'shared/social_share', locals: {
         share_title: t("articles.show.share"),
         title: @article.title,
-        url: article_url(@article.slug)
+        url: article_url(@article)
       } %>
     </aside>
 

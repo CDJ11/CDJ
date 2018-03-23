@@ -34,11 +34,10 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def destroy
-    if @article.safe_to_destroy?
-      @article.destroy
-      redirect_to admin_articles_path, notice: t('admin.geozones.delete.success')
+    if @article.destroy
+      redirect_to admin_articles_path, notice: t('admin.articles.delete.success')
     else
-      redirect_to admin_articles_path, flash: { error: t('admin.geozones.delete.error') }
+      redirect_to admin_articles_path, flash: { error: t('admin.articles.delete.error') }
     end
   end
 
