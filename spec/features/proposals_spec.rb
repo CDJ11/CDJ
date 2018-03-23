@@ -1405,7 +1405,7 @@ feature 'Proposals' do
   end
 
   # TODO i18n : broken because of test locale change
-  xit_behaves_like "followable", "proposal", "proposal_path", { "id": "id" }
+  # it_behaves_like "followable", "proposal", "proposal_path", { "id": "id" }
 
   it_behaves_like "imageable", "proposal", "proposal_path", { "id": "id" }
 
@@ -1437,14 +1437,14 @@ feature 'Proposals' do
                   "Proposal created successfully"
 
   # TODO i18n : broken because of test locale change
-  xit_behaves_like "nested documentable",
-                  "user",
-                  "proposal",
-                  "edit_proposal_path",
-                  { "id": "id" },
-                  nil,
-                  "Save changes",
-                  "Proposal updated successfully"
+  # it_behaves_like "nested documentable",
+  #                 "user",
+  #                 "proposal",
+  #                 "edit_proposal_path",
+  #                 { "id": "id" },
+  #                 nil,
+  #                 "Save changes",
+  #                 "Proposal updated successfully"
 
   it_behaves_like "mappable",
                   "proposal",

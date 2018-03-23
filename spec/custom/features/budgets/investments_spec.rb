@@ -970,7 +970,7 @@ feature 'Budget Investments' do
   end
 
   # TODO i18n : broken because of test locale change
-  xit_behaves_like "followable", "budget_investment", "budget_investment_path", { "budget_id": "budget_id", "id": "id" }
+  # it_behaves_like "followable", "budget_investment", "budget_investment_path", { "budget_id": "budget_id", "id": "id" }
 
   it_behaves_like "imageable", "budget_investment", "budget_investment_path", { "budget_id": "budget_id", "id": "id" }
 
