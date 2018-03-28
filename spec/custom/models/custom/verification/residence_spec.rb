@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+# custom test duplicated in custom folder so that we think to fix broken test
+
 describe Verification::Residence do
 
   let(:residence) { build(:verification_residence, document_number: "12345678Z") }

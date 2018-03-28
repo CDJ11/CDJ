@@ -2,7 +2,7 @@ require 'rails_helper'
 
 # TODO i18n : broken because of test locale change
 
-describe UsersHelper do
+describe UsersHelper, type: :helper do
 
   describe '#humanize_document_type' do
     xit "returns a humanized document type" do

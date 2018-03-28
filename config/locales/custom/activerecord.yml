@@ -41,3 +41,6 @@ fr:
             attachment:
               min_image_width: "L'image doit faire au moins %{required_min_width}px de large"
               min_image_height: "L'image doit faire au moins %{required_min_height}px de haut"
+    attributes:
+      user:
+        login: Email ou nom d'utilisateur
