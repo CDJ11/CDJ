@@ -1,6 +1,6 @@
 <% provide :title do %><%= @article.title %><% end %>
 
-<section class="investment-project-show">
+<section class="article-show">
   <div id="<%= dom_id(@article) %>" class="row">
     <div class="small-12 medium-9 column">
 
@@ -10,7 +10,7 @@
         <h2><%= @article.subtitle%></h2>
       <% end %>
 
-      <div class="investment-project-info">
+      <div class="article-info">
         <%= render '/shared/author_info', resource: @article %>
         <span class="bullet">&nbsp;&bull;&nbsp;</span>
         <%= l @article.created_at.to_date %>
@@ -18,11 +18,7 @@
         <%# geozone_name(@article) %>
       </div>
 
-      <%# if @article.external_url.present? %>
-        <!-- <div class="document-link"> -->
-          <%# text_with_links @article.external_url %>
-        <!-- </div> -->
-      <%# end %>
+      <%= image_tag @article.image_url(:large), alt: @article.image.title, class: 'article-image' %>
 
       <%= safe_html_with_links @article.content.html_safe %>
 

@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   skip_authorization_check
 
   def index
-    @articles = Article.published
+    @articles = Article.published.page(params[:page])
   end
 
   def show

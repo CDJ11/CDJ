@@ -42,6 +42,10 @@
         <%= f.cktext_area :content, label: false, cols: 80, rows: 10, ckeditor: { language: I18n.locale } %>
       </div>
 
+      <div class="small-12 column">
+        <%= render 'images/admin_image', imageable: @article, f: f %>
+      </div>
+
       <div class="small-12 medium-6 large-4">
         <%= f.submit class: "button success expanded", value: t("admin.articles.create.form.submit_button") %>
       </div>

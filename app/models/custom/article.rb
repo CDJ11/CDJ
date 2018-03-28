@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+  include Imageable
+
   VALID_STATUSES = %w(draft published)
 
   belongs_to :author, -> { with_hidden }, class_name: 'User', foreign_key: 'author_id'
