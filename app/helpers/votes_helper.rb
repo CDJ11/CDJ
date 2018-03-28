@@ -14,6 +14,11 @@ module VotesHelper
   end
 
   def css_classes_for_vote(votes, votable)
+    # p "========================="
+    # p votes
+    # p "--------"
+    # p votable
+    # p "========================="
     case votes[votable.id]
     when true
       {in_favor: "voted", against: "no-voted"}
