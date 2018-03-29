@@ -7,6 +7,8 @@ class Article < ActiveRecord::Base
 
   validates :title, presence: true
   validates :status, presence: true, inclusion: { in: VALID_STATUSES }
+  validates :author, presence: true
+  validates :content, presence: true
 
   scope :published, -> { where(status: 'published').order('id DESC') }
 

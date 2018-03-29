@@ -3,7 +3,7 @@
 <main>
   <div class="row">
     <%# TODO - change id and class to smth dedicated to articles %>
-    <div class="small-12 column">
+    <div id="articles" class="small-12 column">
       <% if @articles.any? %>
         <%= render partial: 'articles/article', collection: @articles %>
         <%= paginate @articles %>

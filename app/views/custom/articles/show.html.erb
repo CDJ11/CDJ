@@ -14,11 +14,11 @@
         <%= render '/shared/author_info', resource: @article %>
         <span class="bullet">&nbsp;&bull;&nbsp;</span>
         <%= l @article.created_at.to_date %>
-        <!--span class="bullet">&nbsp;&bull;&nbsp;</span-->
-        <%# geozone_name(@article) %>
       </div>
 
-      <%= image_tag @article.image_url(:large), alt: @article.image.title, class: 'article-image' %>
+      <% if @article.image.present? %>
+        <%= image_tag @article.image_url(:large), alt: @article.image.title, class: 'article-image' %>
+      <% end %>
 
       <%= safe_html_with_links @article.content.html_safe %>
 
