@@ -68,8 +68,7 @@ Puis 2 options :
 
 ### Déployer avec import de la BDD originelle : 
 
-Récupérer une copie de la base de donnée à importer.
-La copier dans `doc/custom`
+Récupérer une copie de la base de donnée à importer (dossier CDJ11_OSP) et la copier dans `doc/custom`.
 
 Personnaliser si nécessaire le script `/lib/custom/import_db.sh`, ligne 4 :
 
