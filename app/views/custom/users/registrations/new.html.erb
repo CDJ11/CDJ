@@ -35,7 +35,7 @@
       <%= f.invisible_captcha :family_name %>
 
 
-      <div class="date-of-birth small-12 medium-6 clear">
+      <div class="date-of-birth">
         <%= f.label t("devise_views.users.registrations.new.date_of_birth") %>
         <p class="help-text" id="date-of-birth-help-text"><%= t("devise_views.users.registrations.new.date_of_birth_note") %></p>
         <%= f.date_select :date_of_birth,
@@ -45,7 +45,9 @@
                           aria: {describedby: "date-of-birth-help-text"} %>
       </div>
 
-      <%= f.select :gender, user_genders_select_options %>
+      <div class="gender">
+        <%= f.select :gender, user_genders_select_options %>
+      </div>
 
       <!-- Address -->
 
