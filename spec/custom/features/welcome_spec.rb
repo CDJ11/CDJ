@@ -3,6 +3,14 @@ require 'rails_helper'
 # CDJ : welcome page replaced with news page
 feature "Welcome screen" do
 
+    before do
+      Setting['feature.articles'] = true
+    end
+
+    after do
+      Setting['feature.articles'] = nil
+    end
+
   scenario 'a regular users sees it the first time he logs in' do
     user = create(:user)
 
