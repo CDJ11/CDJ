@@ -8,6 +8,8 @@ section "Creating Users" do
 
   admin = User.where(email: 'claire.zuliani@happy-dev.fr').first_or_create!(
     username:               'admin happy dev',
+    firstname:              'Admin',
+    lastname:               'HappyDev',
     password:               '12345678',
     password_confirmation:  '12345678',
     confirmed_at:           Time.current,
@@ -19,7 +21,8 @@ section "Creating Users" do
     confirmed_phone: Faker::PhoneNumber.phone_number,
     document_type: "1",
     verified_at: Time.current,
-    document_number: unique_document_number
+    document_number: unique_document_number,
+    postal_code: '11000'
   )
   # TODO : following instruction genereate en error :
   # `PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "administrators_pkey"

@@ -1,42 +1,28 @@
 require 'rails_helper'
 
 feature 'Registration form' do
-  # TODO i18n : broken because of test locale change
-  xscenario 'username is not available', :js do
-    user = create(:user)
-
-    visit new_user_registration_path
-    expect(page).not_to have_content I18n.t("devise_views.users.registrations.new.username_is_not_available")
-
-    fill_in "user_username", with: user.username
-    check 'user_terms_of_service'
-
-    expect(page).to have_content I18n.t("devise_views.users.registrations.new.username_is_not_available")
-  end
-  # TODO i18n : broken because of test locale change
-  xscenario 'username is available', :js do
-    visit new_user_registration_path
-    expect(page).not_to have_content I18n.t("devise_views.users.registrations.new.username_is_available")
-
-    fill_in "user_username", with: "available username"
-    check 'user_terms_of_service'
-
-    expect(page).to have_content I18n.t("devise_views.users.registrations.new.username_is_available")
-  end
 
   scenario 'do not save blank redeemable codes' do
     visit new_user_registration_path(use_redeemable_code: 'true')
 
     fill_in 'user_username',              with: "NewUserWithCode77"
+    fill_in 'user_firstname',              with: "NewUserWithCode77"
+    fill_in 'user_lastname',              with: "NewUserWithCode77"
     fill_in 'user_email',                 with: "new@consul.dev"
     fill_in 'user_password',              with: "password"
     fill_in 'user_password_confirmation', with: "password"
     fill_in 'user_redeemable_code',       with: "            "
+    fill_in 'user_postal_code',           with: "11000"
+    select "1997", from: "user_date_of_birth_1i"
+    select "janvier", from: "user_date_of_birth_2i"
+    select "10", from: "user_date_of_birth_3i"
     check 'user_terms_of_service'
 
-    click_button 'Register'
+    click_button 'register-btn'
+    save_and_open_page
 
-    expect(page).to have_content "Thank you for registering"
+    expect(page).to have_content I18n.t("devise_views.users.registrations.success.title")
+    # expect(page).to have_content I18n.t("invisible_captcha.timestamp_error_message")
 
     new_user = User.last
     expect(new_user.username).to eq("NewUserWithCode77")
@@ -53,7 +39,7 @@ feature 'Registration form' do
     fill_in 'user_password_confirmation', with: 'destroyallhumans'
     check 'user_terms_of_service'
 
-    click_button 'Register'
+    click_button 'register-btn'
 
     expect(page.status_code).to eq(200)
     expect(page.html).to be_empty
@@ -71,9 +57,9 @@ feature 'Registration form' do
     fill_in 'user_password_confirmation', with: 'destroyallhumans'
     check 'user_terms_of_service'
 
-    click_button 'Register'
+    click_button 'register-btn'
 
-    expect(page).to have_content 'Sorry, that was too quick! Please resubmit'
+    expect(page).to have_content I18n.t("invisible_captcha.timestamp_error_message")
 
     expect(page).to have_current_path(new_user_registration_path)
   end
