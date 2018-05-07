@@ -46,22 +46,22 @@
       </div>
 
       <div class="gender">
-        <%= f.select :gender, user_genders_select_options %>
+        <%= f.select :gender, user_genders_select_options, label: t("devise_views.users.registrations.new.gender_label"), prompt: t("devise_views.users.registrations.new.gender_placeholder") %>
       </div>
 
       <!-- Address -->
 
-      <%= f.text_field :address %>
+      <%= f.text_field :address, label: t("devise_views.users.registrations.new.address_label") %>
 
       <div class="medium-6">
         <%= f.text_field :postal_code %>
       </div>
 
-      <%= f.text_field :city %>
+      <%= f.text_field :city, label: t("devise_views.users.registrations.new.city_label") %>
 
       <!-- Connexion info -->
 
-      <%= f.text_field  :phone_number,  placeholder: t("devise_views.organizations.registrations.new.phone_number_label") %>
+      <%= f.text_field  :phone_number,  placeholder: t("devise_views.organizations.registrations.new.phone_number_label"), label: t("devise_views.users.registrations.new.phone_label") %>
 
       <%= f.email_field :email,     placeholder: t("devise_views.users.registrations.new.email_label") %>
 

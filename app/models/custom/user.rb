@@ -1,6 +1,5 @@
 require_dependency Rails.root.join('app', 'models', 'user').to_s
 
-
 class User < ActiveRecord::Base
 
   GENDERS = %w(male female).freeze
@@ -9,6 +8,7 @@ class User < ActiveRecord::Base
             :lastname,
             :date_of_birth,
             :postal_code,
+            :city,
             presence: true, if: :username_required?
 
   private def set_default_username

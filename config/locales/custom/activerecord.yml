@@ -34,6 +34,8 @@ fr:
               accepted: Les conditions générales doivent être acceptées
             password_confirmation:
               confirmation: "Le mot de passe confirmé ne correspond pas au premier mot de passe saisi"
+            username:
+              taken: Ce pseudo est déjà pris
         proposal:
           attributes:
             tag_list:

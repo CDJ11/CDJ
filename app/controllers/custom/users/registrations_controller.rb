@@ -5,7 +5,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     if resource.valid?
-      super
+      super do |user|
+        ::SetRegistrationVerificatedFields.call(user)
+      end
     else
       render :new
     end
@@ -21,8 +23,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
                                    :redeemable_code,
                                    :firstname, :lastname, :date_of_birth, :gender,
                                    :address, :postal_code, :city, :phone_number, :ca_wanabee)
-                            .merge(residence_verified_at: Time.zone.now, verified_at: Time.zone.now,
-                                  level_two_verified_at: Time.zone.now, confirmed_phone: params[:user][:phone_number])
     end
 
 
