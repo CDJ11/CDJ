@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
             :lastname,
             :date_of_birth,
             :postal_code,
-            :city,
             presence: true, if: :username_required?
 
   private def set_default_username

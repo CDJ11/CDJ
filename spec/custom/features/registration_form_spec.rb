@@ -13,7 +13,6 @@ feature 'Registration form' do
     fill_in 'user_password_confirmation', with: "password"
     fill_in 'user_redeemable_code',       with: "            "
     fill_in 'user_postal_code',           with: "11000"
-    fill_in 'user_city',                  with: "Carcassonne"
     select "1997", from: "user_date_of_birth_1i"
     select "January", from: "user_date_of_birth_2i"
     select "10", from: "user_date_of_birth_3i"
@@ -39,7 +38,6 @@ feature 'Registration form' do
     fill_in 'user_password',              with: 'destroyallhumans'
     fill_in 'user_password_confirmation', with: 'destroyallhumans'
     fill_in 'user_postal_code',           with: "11000"
-    fill_in 'user_city',                  with: "Carcassonne"
     select "1997", from: "user_date_of_birth_1i"
     select "January", from: "user_date_of_birth_2i"
     select "10", from: "user_date_of_birth_3i"
@@ -79,7 +77,6 @@ feature 'Registration form' do
     fill_in 'user_password',              with: "password"
     fill_in 'user_password_confirmation', with: "password"
     fill_in 'user_postal_code',           with: "11000"
-    fill_in 'user_city',                  with: "Carcassonne"
     select "1997", from: "user_date_of_birth_1i"
     select "January", from: "user_date_of_birth_2i"
     select "10", from: "user_date_of_birth_3i"

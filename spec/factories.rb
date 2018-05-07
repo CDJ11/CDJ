@@ -13,7 +13,6 @@ FactoryBot.define do
     sequence(:firstname) { |n| "Manuela#{n}" }
     sequence(:lastname) { |n| "Zuliani#{n}" }
     postal_code '11000'
-    city 'Carcassonne'
     date_of_birth 22.years.ago
     # custom_fields end -------------------------
 
