@@ -26,6 +26,10 @@ fr:
           phone_label: Téléphone (facultatif)
           city_label: Ville
           ca_wanabee: "Je souhaite devenir membre actif du conseil départemental des jeunes"
+          terms: J'ai pris connaissance de la %{terms} et m'engage à la respecter.
+          terms_link: charte d'engagement
+          terms_title: J'ai pris connaissance de la charte d'engagement et m'engage à la respecter.
+
     mailer:
       confirmation_instructions:
         confirm_link: Confirmer mon compte
