@@ -37,7 +37,8 @@ FactoryBot.define do
       sms_confirmation_code "1234"
       document_type "1"
       document_number
-      date_of_birth Date.new(1980, 12, 31)
+      # date_of_birth Date.new(1980, 12, 31)
+      date_of_birth 22.years.ago #custom field
       gender "female"
       geozone
     end
