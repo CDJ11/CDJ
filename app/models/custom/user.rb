@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
 
 
   def self.maximum_required_age
-    (Setting['max_age_to_participate'] || 16).to_i
+    (Setting['max_age_to_participate'] || 25).to_i
   end
 
   private
