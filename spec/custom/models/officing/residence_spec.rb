@@ -37,7 +37,7 @@ describe Officing::Residence do
 
       expect(user.document_number).to eq('12345678Z')
       expect(user.document_type).to eq("1")
-      expect(user.date_of_birth.year).to eq(valid_date_of_birth_year+1.year)
+      expect(user.date_of_birth.year).to eq(valid_date_of_birth_year+1)
       expect(user.date_of_birth.month).to eq(11)
       expect(user.date_of_birth.day).to eq(30)
       expect(user.gender).to eq('female')
