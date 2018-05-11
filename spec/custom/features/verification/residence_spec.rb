@@ -13,7 +13,7 @@ feature 'Residence' do
 
     fill_in 'residence_document_number', with: "12345678Z"
     select 'DNI', from: 'residence_document_type'
-    select_date "31-December-#{19.year.ago}", from: 'residence_date_of_birth'
+    select_date "31-December-#{valid_date_of_birth_year}", from: 'residence_date_of_birth'
     fill_in 'residence_postal_code', with: '28013'
     check 'residence_terms_of_service'
 
