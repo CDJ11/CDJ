@@ -41,8 +41,8 @@
                                   aria: {describedby: "date-of-birth-help-text"} %>
               </div>
               <div class="gender">
-              <%= f.select :gender, user_genders_select_options %>
-            </div>
+                <%= f.select :gender, user_genders_select_options, label: t("devise_views.users.registrations.new.gender_label"), prompt: t("devise_views.users.registrations.new.gender_placeholder") %>
+              </div>
 
             <!-- Address -->
 
