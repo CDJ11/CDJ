@@ -31,7 +31,8 @@ describe TagCloud do
       expect(tag_names(tag_cloud)).to contain_exactly('participation')
     end
 
-    it "returns tags from last week" do
+    # custom CDJ Aude : removal of last_week filter
+    xit "returns tags from last week" do
       create(:proposal, tag_list: 'participation', created_at: 1.day.ago)
       create(:proposal, tag_list: 'corruption',    created_at: 2.weeks.ago)
 
