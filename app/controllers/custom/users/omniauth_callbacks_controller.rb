@@ -35,7 +35,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         # Add an identity omniauth
         current_user.fill_from_omniauth(auth)
         if current_user.save
-          flash[:notice] = I18n.t("devise.omniauth_callbacks.provider_added", kind: provider.to_s.capitalize)
+          flash[:notice] = I18n.t("devise.omniauth_callbacks.success", kind: provider.to_s.capitalize)
           redirect_to account_path
         else
           flash[:warning] = I18n.t("devise.omniauth_callbacks.failure", kind: provider.to_s.capitalize, reason: "il y a eu un problème technique.")
@@ -43,7 +43,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
       else
         # Registration - (method `Account.new_with_session` is called)
-        flash[:notice] = I18n.t("devise.omniauth_callbacks.provider_added", kind: provider.to_s.capitalize)
+        flash[:notice] = I18n.t("devise.omniauth_callbacks.success", kind: provider.to_s.capitalize)
         session["omniauth"] = auth
         redirect_to new_user_registration_path
       end
