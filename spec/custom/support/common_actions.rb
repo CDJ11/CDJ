@@ -307,12 +307,12 @@ module CommonActions
   #   end
   # end
 
-  def add_to_ballot(budget_investment)
-    within("#budget_investment_#{budget_investment.id}") do
-      find('.add a').trigger('click')
-      expect(page).to have_content "Remove"
-    end
-  end
+  # def add_to_ballot(budget_investment)
+  #   within("#budget_investment_#{budget_investment.id}") do
+  #     find('.add a').click
+  #     expect(page).to have_content "Remove"
+  #   end
+  # end
 
   # def vote_for_poll_via_web(poll, question, answer)
   #   visit poll_path(poll)
@@ -368,6 +368,10 @@ module CommonActions
   #   fill_in "newsletter_from", with: (options[:from] || "no-reply@consul.dev")
   #   fill_in "newsletter_body", with: (options[:body] || "This is a different body")
   # end
+
+  def click_notifications_icon
+    first("#notifications a").click
+  end
 
   # # Custom method proper to CJAude
 

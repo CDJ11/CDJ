@@ -12,10 +12,12 @@ feature 'Budget Investments' do
 
   before do
     Setting['feature.allow_images'] = true
+    Setting['feature.budgets'] = true
   end
 
   after do
     Setting['feature.allow_images'] = nil
+    Setting['feature.budgets'] = nil
   end
 
   context "Concerns" do
@@ -991,7 +993,7 @@ feature 'Budget Investments' do
     expect(page).not_to have_content("Local government is not competent in this matter")
   end
 
-  scenario "Show milestones", :js do
+  xscenario "Show milestones", :js do
     user = create(:user)
     investment = create(:budget_investment)
     create(:budget_investment_milestone, investment: investment,
