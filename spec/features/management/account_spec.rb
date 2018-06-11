@@ -88,7 +88,6 @@ feature 'Account' do
     logout
 
     login_through_form_with_email_and_password(user.username, new_password)
-
     expect(page).to have_content 'You have been signed in successfully.'
   end
 

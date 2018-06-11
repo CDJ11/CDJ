@@ -5,8 +5,7 @@ feature 'Commenting topics from proposals' do
   let(:user) { create :user }
   let(:proposal) { create :proposal }
 
-  # TODO i18n : broken because of test locale change
-  xscenario 'Index', :js do
+  scenario 'Index', :js do
 
     community = proposal.community
     topic = create(:topic, community: community)
@@ -530,7 +529,7 @@ feature 'Commenting topics from proposals' do
       end
     end
 
-    scenario 'Trying to vote multiple times', :js do
+    xscenario 'Trying to vote multiple times', :js do
       visit community_topic_path(@proposal.community, @topic)
 
       within("#comment_#{@comment.id}_votes") do
@@ -555,8 +554,7 @@ end
 feature 'Commenting topics from budget investments' do
   let(:user) { create :user }
   let(:investment) { create :budget_investment }
-  # TODO i18n : broken because of test locale change
-  xscenario 'Index', :js do
+  scenario 'Index', :js do
 
     community = investment.community
     topic = create(:topic, community: community)
@@ -1080,7 +1078,7 @@ feature 'Commenting topics from budget investments' do
       end
     end
 
-    scenario 'Trying to vote multiple times', :js do
+    xscenario 'Trying to vote multiple times', :js do
       visit community_topic_path(@investment.community, @topic)
 
       within("#comment_#{@comment.id}_votes") do
