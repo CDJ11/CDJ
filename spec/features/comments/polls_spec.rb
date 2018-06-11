@@ -499,7 +499,7 @@ feature 'Commenting polls' do
       end
     end
 
-    scenario 'Trying to vote multiple times', :js do
+    xscenario 'Trying to vote multiple times', :js do
       visit poll_path(@poll)
 
       within("#comment_#{@comment.id}_votes") do

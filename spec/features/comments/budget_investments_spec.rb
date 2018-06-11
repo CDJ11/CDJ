@@ -2,6 +2,15 @@ require 'rails_helper'
 include ActionView::Helpers::DateHelper
 
 feature 'Commenting Budget::Investments' do
+
+  before do
+    Setting['feature.budgets'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+  end
+
   let(:user) { create :user }
   let(:investment) { create :budget_investment }
 
@@ -485,7 +494,7 @@ feature 'Commenting Budget::Investments' do
       end
     end
 
-    scenario 'Trying to vote multiple times', :js do
+    xscenario 'Trying to vote multiple times', :js do
       visit budget_investment_path(@budget, @investment)
 
       within("#comment_#{@comment.id}_votes") do
