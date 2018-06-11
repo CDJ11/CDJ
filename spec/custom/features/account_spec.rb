@@ -5,6 +5,11 @@ feature 'Account' do
   background do
     @user = create(:user, username: "Manuela Colau")
     login_as(@user)
+    Setting['feature.articles'] = true
+  end
+
+  after do
+    Setting['feature.articles'] = nil
   end
 
   scenario 'Show' do

@@ -994,7 +994,7 @@ feature 'Admin budget investments' do
       login_as(valuator.user.reload)
       visit root_path
       click_link "Admin"
-      click_link "Valuation"
+      click_link("Valuation", match: :first)
 
       within "#budget_#{budget.id}" do
         click_link "Evaluate"
