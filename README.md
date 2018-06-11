@@ -35,7 +35,7 @@ Voir la [page dédiée sur le site du département](https://www.aude.fr/670-cons
 ### Workflow
 
 * la branche `master` est la référence qui doit rester déployable en production à chaque instant
-* les Pull Requests sont fusionnées en faisant un **Squash and Merge** afin de garder un historique plus lisibles des évolutions qui ont eut lieux sur ce fork
+* les Pull Requests sont automatiquement fusionnées en faisant un **Squash and Merge** afin de garder un historique plus lisibles des évolutions qui ont eut lieux sur ce fork
   * [exemple de commit issu d'un "squash and merge"](https://github.com/CDJ11/CDJ/commit/1445a0e069b81983d85008e6941925d33bfeedf4)
 * le fork est mis à jour en suivant [le processus décrit dans la doc officielle](https://consul_docs.gitbooks.io/docs/content/en/forks/update.html)
 
@@ -54,6 +54,20 @@ Le framework CSS utilisé est Foundation en version 6.2.4.
 car la documentation disponible sur le site web du projet correspond à une version
 plus récente.
 
+### Omniauth 
+
+#### Facebook
+
+Pour se connecter via facebook en local :
+
+Utiliser ngrok : `./ngrok http 3000`
+
+Dans l'[interface développeur de facebook](https://developers.facebook.com/apps) : 
+- créer une application de test, si elle n'existe pas encore (credentials à renseigner dans `config/secrtes.yml`)
+- renseigner l'url de callback à partir de l'url https fournie par ngrok dans Produits > Facebook login > Paramètres > champs "URI de redirection OAuth valides" -> ex `https://a171c66a.ngrok.io/users/auth/facebook/callback`
+- renseigner le "Domaines de l’app" dans Paramètres > Général -> ex `a171c66a.ngrok.io`
+- renseigner "URL du site" dans Paramètres > Général -> block Site web -> `https://a171c66a.ngrok.io/`
+
 ## Déploiements
 
 ```bash
@@ -62,6 +76,28 @@ cd consul
 bundle install
 cp config/database.yml.example config/database.yml
 cp config/secrets.yml.example config/secrets.yml
+```
+
+Puis 2 options :
+
+### Déployer avec import de la BDD originelle : 
+
+Récupérer une copie de la base de donnée à importer (dossier CDJ11_OSP) et la copier dans `doc/custom`.
+
+Personnaliser si nécessaire le script `/lib/custom/import_db.sh`, ligne 4 :
+
+  psql NOM_BASE_DESTINATION < doc/custom/NOM_FICHIER_A_IMPORTER.sql
+
+```bash
+chmod 755 lib/custom/import_db.sh #si fichier non executable
+./lib/custom/import_db.sh 
+```
+
+Le script peut renvoyer un message d'erreur en fin de parcours (`duplicate key` lors de la creation d'un utilisateur admin), qui logiquement n'empêche pas la bonne exécution de l'intégralité du script.
+
+### Déployer sans import de la BDD originelle : 
+
+```
 bin/rake db:create
 bin/rake db:migrate
 bin/rake db:seed
