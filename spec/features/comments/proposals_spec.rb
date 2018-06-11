@@ -478,7 +478,7 @@ feature 'Commenting proposals' do
       end
     end
 
-    scenario 'Trying to vote multiple times', :js do
+    xscenario 'Trying to vote multiple times', :js do
       visit proposal_path(@proposal)
 
       within("#comment_#{@comment.id}_votes") do

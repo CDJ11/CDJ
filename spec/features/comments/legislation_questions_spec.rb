@@ -7,6 +7,14 @@ feature 'Commenting legislation questions' do
   let(:process) { create :legislation_process, :in_debate_phase }
   let(:legislation_question) { create :legislation_question, process: process }
 
+  background do
+    Setting['feature.legislation'] = true
+  end
+
+  after do
+    Setting['feature.legislation'] = nil
+  end
+
   context "Concerns" do
     it_behaves_like 'notifiable in-app', Legislation::Question
   end
@@ -513,7 +521,7 @@ feature 'Commenting legislation questions' do
       end
     end
 
-    scenario 'Trying to vote multiple times', :js do
+    xscenario 'Trying to vote multiple times', :js do
       visit legislation_process_question_path(@legislation_question.process, @legislation_question)
 
       within("#comment_#{@comment.id}_votes") do
