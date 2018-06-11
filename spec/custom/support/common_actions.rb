@@ -3,10 +3,14 @@ module CommonActions
   def sign_up(email = 'manuela@consul.dev', password = 'judgementday')
     visit '/'
 
-    click_link 'Register'
+    click_link('Register', match: :first)
 
-    fill_in 'user_username',              with: "Manuela Carmena #{rand(99999)}"
     fill_in 'user_email',                 with: email
+    fill_in 'user_username',              with: "Manuela Carmena #{rand(99999)}"
+    fill_in 'user_firstname',             with: "Manuela  #{rand(99999)}"
+    fill_in 'user_lastname',              with: "Carmena  #{rand(99999)}"
+    select_date "31-December-#{valid_date_of_birth_year}", from: 'user_date_of_birth'
+    fill_in 'user_postal_code',           with: "11000"
     fill_in 'user_password',              with: password
     fill_in 'user_password_confirmation', with: password
     check 'user_terms_of_service'
@@ -74,16 +78,16 @@ module CommonActions
   #   expect(page).to have_content "Your account has been confirmed"
   # end
 
-  # def reset_password
-  #   create(:user, email: 'manuela@consul.dev')
+  def reset_password
+    create(:user, email: 'manuela@consul.dev')
 
-  #   visit '/'
-  #   click_link 'Sign in'
-  #   click_link 'Forgotten your password?'
+    visit '/'
+    click_link('Sign in', match: :first)
+    click_link 'Forgotten your password?'
 
-  #   fill_in 'user_email', with: 'manuela@consul.dev'
-  #   click_button 'Send instructions'
-  # end
+    fill_in 'user_email', with: 'manuela@consul.dev'
+    click_button 'Send instructions'
+  end
 
   # def comment_on(commentable, user = nil)
   #   user ||= create(:user)
@@ -254,23 +258,23 @@ module CommonActions
   #   tag_cloud.tags.map(&:name)
   # end
 
-  # def create_proposal_notification(proposal)
-  #   login_as(proposal.author)
-  #   visit root_path
+  def create_proposal_notification(proposal)
+    login_as(proposal.author)
+    visit root_path
 
-  #   click_link "My activity"
+    click_link("My activity", match: :first)
 
-  #   within("#proposal_#{proposal.id}") do
-  #     click_link "Send notification"
-  #   end
+    within("#proposal_#{proposal.id}") do
+      click_link "Send notification"
+    end
 
-  #   fill_in 'proposal_notification_title', with: "Thanks for supporting proposal: #{proposal.title}"
-  #   fill_in 'proposal_notification_body', with: "Please share it with others! #{proposal.summary}"
-  #   click_button "Send message"
+    fill_in 'proposal_notification_title', with: "Thanks for supporting proposal: #{proposal.title}"
+    fill_in 'proposal_notification_body', with: "Please share it with others! #{proposal.summary}"
+    click_button "Send message"
 
-  #   expect(page).to have_content "Your message has been sent correctly."
-  #   Notification.last
-  # end
+    expect(page).to have_content "Your message has been sent correctly."
+    Notification.last
+  end
 
   # def create_direct_message(sender, receiver)
   #   login_as(sender)
