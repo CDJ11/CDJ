@@ -8,7 +8,7 @@ class Proposal < ActiveRecord::Base
       if author
         if author.document_number?
           self.responsible_name = author.document_number
-        else
+        elsif self.responsible_name.blank?
           self.responsible_name = author.name
         end
       end
