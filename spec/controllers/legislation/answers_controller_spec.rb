@@ -2,6 +2,14 @@ require 'rails_helper'
 
 describe Legislation::AnswersController do
 
+  background do
+    Setting['feature.legislation'] = nil
+  end
+
+  after do
+    Setting['feature.legislation'] = nil
+  end
+
   describe 'POST create' do
     before do
       @process = create(:legislation_process, debate_start_date: Date.current - 3.days, debate_end_date: Date.current + 2.days)
