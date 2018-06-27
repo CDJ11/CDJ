@@ -5,6 +5,7 @@ section "Creating custom Settings" do
 
   # Feature flags
   Setting['feature.articles'] = true
+  Setting['feature.cdj_profiles'] = true
   Setting['feature.debates'] = true
   Setting['feature.proposals'] = true
   Setting['feature.spending_proposals'] = nil
@@ -15,7 +16,7 @@ section "Creating custom Settings" do
   Setting['feature.google_login'] = nil
   Setting['feature.public_stats'] = true
   Setting['feature.budgets'] = nil
-  Setting['feature.signature_sheets'] = true
+  Setting['feature.signature_sheets'] = nil
   Setting['feature.legislation'] = nil
   Setting['feature.user.recommendations'] = true
   Setting['feature.community'] = true
