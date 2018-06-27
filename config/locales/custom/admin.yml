@@ -2,8 +2,11 @@
 fr:
   admin:
     menu:
-      articles:
-        "Rédaction des actualités"
+      articles: "Rédaction des actualités"
+      animators: "Comité d'animation"
+      title_categories: "Catégories"
+      title_profiles: "Utilisateurs"
+      title_banners: "Bannières"
     articles:
       delete:
         success: Article supprimé avec succès
@@ -11,4 +14,15 @@ fr:
       create:
         form:
           submit_button: Créer l'article
+    animators:
+      index:
+        title: Comité d'animation
+        name: Nom
+        email: Email
+        no_animators: Il n'y a pas de membres du CA.
+      animator:
+        add: Ajouter
+        delete: Supprimer
+      search:
+        title: "Membre du CA : Recherche d'utilisateur"
 
