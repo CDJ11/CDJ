@@ -86,11 +86,17 @@ module Abilities
       can [:create, :destroy], DirectUpload
 
       can [:deliver], Newsletter, hidden_at: nil
-      
+
       # Custom Cdj --------------
+
+      # abilities enlevees de common
+      can :create, Proposal
+      can :create, Legislation::Proposal
+
       can [:manage], Article
 
       can [:search, :create, :index, :destroy], ::Animator
+      can [:cdj_show, :print_password, :reset_password, :change_password], User
     end
   end
 end
