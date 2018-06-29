@@ -4,15 +4,15 @@ module Abilities
 
     def initialize(user)
       merge Abilities::Common.new(user)
-      
+
       can [:search, :index], ::User
-      
+
       # Debates / Idées -----------------------------------
-      
+
       # Proposals / Projets -------------------------------
       can :create, Proposal
       can :create, Legislation::Proposal
-      
+
       # Polls / Votes -------------------------------------
       can [:read, :create, :update, :destroy, :add_question, :results, :stats], Poll
       can [:read, :create, :update], Poll::Question
@@ -20,7 +20,7 @@ module Abilities
 
       # Articles / Actualité ------------------------------
       can [:manage], Article
-      
+
       # User management -----------------------------------
 
       # Modération ----------------------------------------
