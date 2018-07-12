@@ -12,7 +12,8 @@ set :deploy_via,      :remote_cache
 #= Callbacks ==============================================
 after "bundler:install", :create_symbolic_links do
   on roles(:app) do
-    # execute "cp #{release_path}/config/database_#{fetch(:rails_env)}.yml #{release_path}/config/database.yml"
+    execute "cp #{release_path}/config/database_#{fetch(:rails_env)}.yml #{release_path}/config/database.yml"
+    execute "cp #{release_path}/config/secrets_#{fetch(:rails_env)}.yml #{release_path}/config/secrets.yml"
     execute "rm -rf #{release_path}/public/uploads"
     execute "ln -s #{shared_path}/public/uploads #{release_path}/public/uploads"
     execute "rm -rf #{release_path}/log"
