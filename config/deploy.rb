@@ -61,11 +61,10 @@ end
 # # Consul version ==========================
 # lock '~> 3.10.1'
 
-def deploysecret(key)
-  @deploy_secrets_yml ||= YAML.load_file('config/deploy-secrets.yml')[fetch(:stage).to_s]
-  p @deploy_secrets_yml
-  @deploy_secrets_yml.fetch(key.to_s, 'undefined')
-end
+# def deploysecret(key)
+#   @deploy_secrets_yml ||= YAML.load_file('config/deploy-secrets.yml')[fetch(:stage).to_s]
+#   @deploy_secrets_yml.fetch(key.to_s, 'undefined')
+# end
 
 # set :rails_env, fetch(:stage)
 # set :rvm1_ruby_version, '2.3.2'
