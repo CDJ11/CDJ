@@ -4,15 +4,19 @@ require 'capistrano/setup'
 # Includes default deployment tasks
 require 'capistrano/deploy'
 
+# require 'capistrano/bundler'
 require 'capistrano/rails'
-require 'capistrano/bundler'
-require 'capistrano/rvm'
 require 'capistrano/faster_assets'
+require 'capistrano/rvm'
 require 'capistrano/delayed_job'
+require 'whenever/capistrano'
 require 'capistrano/puma'
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Workers
 
+#SCM: Git
+require "capistrano/scm/git"
+install_plugin Capistrano::SCM::Git
 
 # # Consul version ==========================
 # # Load DSL and set up stages
