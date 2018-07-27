@@ -6,7 +6,7 @@ set :user,            'deploy'
 set :deploy_to,       "/home/#{fetch(:user)}/www/#{fetch(:application)}"
 set :stage,           :staging
 set :rails_env,       'staging'
-set :branch,          "capistrano"
+set :branch,          "staging"
 
 #= RVM ==============================================
 set :rvm_ruby_version, '2.3.2@cdj_aude'
