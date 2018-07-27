@@ -1,6 +1,6 @@
 # Custom CDJ Aude ============================
 #= Connexion Serveur ==============================================
-server '178.170.55.154', user: "deploy", roles: [:web, :app, :db], primary: true
+server '109.238.3.108', user: "deploy", roles: [:web, :app, :db], primary: true
 set :ssh_options, {forward_agent: true, port: 124}
 set :user,            'deploy'
 set :deploy_to,       "/home/#{fetch(:user)}/www/#{fetch(:application)}"
