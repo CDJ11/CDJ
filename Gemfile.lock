@@ -1,6 +1,6 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://rails-assets.org/
+  remote: http://insecure.rails-assets.org/
   specs:
     actionmailer (4.2.10)
       actionpack (= 4.2.10)
@@ -593,4 +593,4 @@ DEPENDENCIES
   whenever (~> 0.10.0)
 
 BUNDLED WITH
-   1.16.2
+   1.16.3
