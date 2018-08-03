@@ -50,7 +50,7 @@ feature 'Account' do
     expect(find("#account_email_on_direct_message")).not_to be_checked
   end
 
-  scenario 'Edit email address' do
+  xscenario 'Edit email address' do
     visit account_path
 
     click_link "Change my credentials"

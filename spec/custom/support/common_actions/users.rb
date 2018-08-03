@@ -30,6 +30,16 @@ module Users
     Setting['feature.articles'] = false
   end
 
+  def login_through_form_as(user)
+    visit root_path
+    click_link("Sign in", match: :first)
+
+    fill_in 'user_login', with: user.email
+    fill_in 'user_password', with: user.password
+
+    click_button 'Enter'
+  end
+
   def reset_password
     create(:user, email: 'manuela@consul.dev')
 
