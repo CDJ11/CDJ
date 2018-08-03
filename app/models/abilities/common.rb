@@ -95,12 +95,7 @@ module Abilities
       can [:create], Topic
       can [:update, :destroy], Topic, author_id: user.id
 
-      # Custom ==========================================
-      # can [:remove_provider], User, id: user.id
-      # can :manage, Identity, user_id: user.id
-      # can :destroy, Identity
-      # can :remove_provider, Identity
-      # End custom ======================================
+      can :disable_recommendations, [Debate, Proposal]
     end
   end
 end

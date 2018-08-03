@@ -13,7 +13,7 @@ module Abilities
       can :update, Debate do |debate|
         debate.editable_by?(user)
       end
-      can :destroy, Debate do |debate|
+      can :destroy, Debate do |debate| # Custom CDJ Aude
         debate.destroyable_by?(user)
       end
 
@@ -31,7 +31,7 @@ module Abilities
 
       can :create, Comment
       can :create, Debate
-      unless Setting["feature.cdj_aude"].present?
+      unless Setting["feature.cdj_aude"].present? # Custom CDJ Aude
         can :create, Proposal
         can :create, Legislation::Proposal
       end
@@ -101,6 +101,8 @@ module Abilities
 
       can [:create], Topic
       can [:update, :destroy], Topic, author_id: user.id
+
+      can :disable_recommendations, [Debate, Proposal]
     end
 
   end

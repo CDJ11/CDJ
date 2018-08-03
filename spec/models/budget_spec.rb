@@ -245,15 +245,15 @@ describe Budget do
     after do
       I18n.locale = :en
     end
-    # TODO i18n : broken because of test locale change
-    xit "correctly formats Euros with Spanish" do
+
+    it "correctly formats Euros with Spanish" do
       budget.update(currency_symbol: '€')
       I18n.locale = :es
 
       expect(budget.formatted_amount(1000.00)).to eq ('1.000 €')
     end
-    # TODO i18n : broken because of test locale change
-    xit "correctly formats Dollars with Spanish" do
+
+    it "correctly formats Dollars with Spanish" do
       budget.update(currency_symbol: '$')
       I18n.locale = :es
 

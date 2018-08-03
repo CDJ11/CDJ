@@ -29,10 +29,17 @@ fr:
         title: Titre
         description: Description
         target_url: Lien
-        style: Style
-        image: Image
         post_started_at: Début de la publication
         post_ended_at: Fin de la publication
+        sections_label: Sections où il figurera
+        sections:
+          homepage: Page d’accueil
+          debates: Discussions
+          proposals: Propositions
+          budgets: Budget participatif
+          help_page: Page d'aide
+        background_color: Couleur de fond
+        font_color: Couleur de la police
       edit:
         editing: Modifier la bannière
         form:
@@ -60,6 +67,7 @@ fr:
           on_debates: Débats
           on_proposals: Propositions
           on_users: Utilisateurs
+          on_system_emails: System emails
         title: Activité de modération
         type: Type
         no_activity: Il n’y a aucune activité de modérateurs.
@@ -121,6 +129,7 @@ fr:
         table_population: Population
         population_info: "Le champ de population pour la tranche du budget est utilisé à des fins statistiques à la fin du budget pour montrer le pourcentage de votants pour chaque tranche qui représente une zone. Le champ est optionnel donc vous pouvez le laissez blanc."
         max_votable_headings: "Nombre maxium de rubriques dans lequel un utilisateur peut voter"
+        current_of_max_headings: "%{current} sur %{max}"
       winners:
         calculate: Calculer les investissements gagnant
         calculated: Le calcul des gagnants peut prendre quelques minutes.
@@ -159,12 +168,11 @@ fr:
           selected: Sélectionné
           undecided: Non décidé
           unfeasible: Irréalisable
-          max_per_heading: Nombre maximum de soutiens par tranche
+          min_total_supports: Prise en charge minimale
           winners: Gagnants
           one_filter_html: "Filtres activés : <b><em>%{filter}</em></b>"
           two_filters_html: "Filtres activés : <b><em>%{filter}, %{advanced_filters}</em></b>"
         buttons:
-          search: Rechercher
           filter: Filtrer
         download_current_selection: "Télécharger la sélection"
         no_budget_investments: "Il n’y a aucun projet d’investissement."
@@ -179,19 +187,21 @@ fr:
           undecided: "Incertain"
         selected: "Sélectionné"
         select: "Sélectionner"
-        table_id: "ID"
-        table_title: "Titre"
-        table_supports: "Soutiens"
-        table_admin: "Administrateur"
-        table_valuator: "Évaluateur"
-        table_valuation_group: "Groupe d’évaluation"
-        table_geozone: "Périmètre des opérations"
-        table_feasibility: "Faisabilité"
-        table_valuation_finished: "Ev. Ter."
-        table_selection: "Sélection"
-        table_evaluation: "Montrer aux évaluateurs"
-        table_incompatible: "Incompatibles"
-        cannot_calculate_winners: The budget has to stay on phase "Balloting projects", "Reviewing Ballots" or "Finished budget" in order to calculate winners projects
+        list:
+          id: ID
+          title: Titre
+          supports: Soutiens
+          admin: Administrateur
+          valuator: Évaluateur
+          valuation_group: Groupe d’évaluation
+          geozone: Portée de l'opération
+          feasibility: Faisabilité
+          valuation_finished: Ev. Ter.
+          selected: Sélectionné
+          visible_to_valuators: Montrer aux évaluateurs
+          author_username: Nom de l'auteur
+          incompatible: Incompatible
+        cannot_calculate_winners: Le budget doit rester sur la phase "Vote des projets", "Dépouillage du bulletin de vote" ou "Budget terminé" afin de calculer les projets gagnants
         see_results: "Voir les résultats"
       show:
         assigned_admin: Administrateur assigné
@@ -251,6 +261,7 @@ fr:
         table_title: "Titre"
         table_description: "Description"
         table_publication_date: "Date de publication"
+        table_status: Statut
         table_actions: "Actions"
         delete: "Supprimer le jalon"
         no_milestones: "Aucun jalon défini"
@@ -260,6 +271,8 @@ fr:
       form:
         add_language: Ajouter une langue
         remove_language: Supprimer une langue
+        admin_statuses: Administrer les statuts d'investissement
+        no_statuses_defined: Il n'y a pas encore de statuts d'investissement définis
       new:
         creating: Créer un nouveau jalon
         date: Date
@@ -272,6 +285,26 @@ fr:
         notice: Mise à jour du jalon réussie
       delete:
         notice: Jalon supprimé avec succès
+    statuses:
+      index:
+        title: Statuts d’investissement
+        empty_statuses: Aucun statut d'investissement n'a été créé
+        new_status: Créer un nouveau statut d'investissement
+        table_name: Nom
+        table_description: Description
+        table_actions: Actions
+        delete: Supprimer
+        edit: Modifier
+      edit:
+        title: Modifier le statut d'investissement
+      update:
+        notice: Le statut d'investissement a été mis à jour avec succès
+      new:
+        title: Créer un statut d'investissement
+      create:
+        notice: Le statut d'investissement a été créé avec succès
+      delete:
+        notice: Le statut d'investissement a été supprimé avec succès
     comments:
       index:
         filter: Filtrer
@@ -312,6 +345,15 @@ fr:
         hidden_at: 'Masqué le :'
         registered_at: 'Inscrit le :'
         title: Activité de l'utilisateur (%{user})
+    hidden_budget_investments:
+      index:
+        filter: Filtre
+        filters:
+          all: Tous
+          with_confirmed_hide: Confirmé
+          without_confirmed_hide: En attente
+        title: Hidden budgets investments
+        no_hidden_budget_investments: There are no hidden budget investments
     legislation:
       processes:
         create:
@@ -332,7 +374,7 @@ fr:
           enabled: Activé
           process: Processus
           debate_phase: Phase de débat
-          allegations_phase: Drafting phase
+          allegations_phase: Phase de brouillon
           proposals_phase: Phase de propositions
           start: Début
           end: Fin
@@ -364,7 +406,7 @@ fr:
           status_planned: Planifié
         subnav:
           info: Information
-          draft_texts: Drafting
+          draft_texts: Brouillon
           questions: Débat
           proposals: Propositions
       proposals:
@@ -374,6 +416,7 @@ fr:
         form:
           custom_categories: Catégories
           custom_categories_description: Catégories que les utilisateurs peuvent sélectionner créer une proposition.
+          custom_categories_placeholder: Enter the tags you would like to use, separated by commas (,) and between quotes ("")
       draft_versions:
         create:
           notice: 'Le brouillon a été créé avec succès. <a href="%{link}"> cliquez ici pour le visualiser</a>'
@@ -481,12 +524,16 @@ fr:
       hidden_comments: Commentaires masqués
       hidden_debates: Débats masqués
       hidden_proposals: Propositions masquées
+      hidden_budget_investments: Hidden budget investments
+      hidden_proposal_notifications: Masquer les notifications de propositions
       hidden_users: Utilisateurs masqués
       administrators: Administrateurs
       managers: Responsables
       moderators: Modérateurs
-      emails: Envoi de courriels
+      messaging_users: Messages aux utilisateurs
       newsletters: Bulletins d’information
+      admin_notifications: Notifications
+      system_emails: System Emails
       emails_download: Téléchargement des courriels
       valuators: Évaluateurs
       poll_officers: Assesseurs
@@ -505,12 +552,26 @@ fr:
         pages: Pages personnalisées
         images: Images personnalisées
         content_blocks: Blocs de contenu personnalisés
+        information_texts: Custom information texts
+        information_texts_menu:
+          debates: "Debates"
+          community: "Community"
+          proposals: "Proposals"
+          polls: "Polls"
+          layouts: "Layouts"
+          mailers: "Courriels"
+          management: "Gestion"
+          guides: "Guides"
+          welcome: "Bienvenue"
+        buttons:
+          save: "Sauvegarder"
       title_moderated_content: Contenu modéré
       title_budgets: Budgets
       title_polls: Votes
       title_profiles: Profils
       title_settings: Paramètres
       title_site_customization: Personnalisation du site
+      title_booths: Salle de vote
       legislation: Processus législatif collaboratif
       users: Utilisateurs
     administrators:
@@ -544,7 +605,7 @@ fr:
       feasible_and_undecided_investment_authors: "Auteurs des propositions d'investissement dans le budget actuel qui ne sont pas concernées par : [évaluation terminée, non viable]"
       selected_investment_authors: Auteurs des propositions investissement sélectionnées dans le budget actuel
       winner_investment_authors: Auteurs des propositions d'investissement gagnantes dans le budget actuel
-      not_supported_on_current_budget: Users that haven't supported investments on current budget
+      not_supported_on_current_budget: Utilisateurs qui n'ont pas pris en charge les investissements sur le budget actuel
       invalid_recipients_segment: "Le segment des destinataires est invalide"
     newsletters:
       create_success: Bulletin d'information créé avec succès
@@ -579,6 +640,53 @@ fr:
         body: Contenu du courriel
         body_help_text: Voici le rendu du courriel pour les destinataires
         send_alert: Êtes-vous sûr de vouloir envoyer ce bulletin d'information à %{n} utilisateurs ?
+    admin_notifications:
+      create_success: Notification créée avec succès
+      update_success: Notification créée avec succès
+      send_success: Notification envoyée avec succès
+      delete_success: Notification supprimée avec succès
+      index:
+        section_title: Notifications
+        new_notification: Nouvelle notification
+        title: Titre
+        segment_recipient: Destinataires
+        sent: Envoyé
+        actions: Actions
+        draft: Brouillon
+        edit: Éditer
+        delete: Supprimer
+        preview: Aperçu
+        view: Vue
+        empty_notifications: Aucune notification à afficher
+      new:
+        section_title: Nouvelle notification
+      edit:
+        section_title: Editer la notification
+      show:
+        section_title: Aperçu de la notification
+        send: Envoyer la notification
+        will_get_notified: (%{n} utilisateurs seront avertis)
+        got_notified: (%{n} utilisateurs ont été notifiés)
+        sent_at: Envoyé à
+        title: Titre
+        body: Texte
+        link: Lien
+        segment_recipient: Destinataires
+        preview_guide: "Voici le rendu de la notification pour les destinataires :"
+        sent_guide: "Voici le rendu de la notification pour les destinataires :"
+        send_alert: Êtes-vous sûr de vouloir envoyer cette notification à %{n} utilisateurs ?
+    system_emails:
+      preview_pending:
+        action: Preview Pending
+        preview_of: Aperçu de %{name}
+        pending_to_be_sent: Ceci est le contenu en attente d’être envoyé
+        moderate_pending: Moderate notification send
+        send_pending: Send pending
+        send_pending_notification: Les notifications en attente ont été envoyées avec succès
+      proposal_notification_digest:
+        title: Proposal Notification Digest
+        description: Gathers all proposal notifications for an user in a single message, to avoid too much emails.
+        preview_detail: Users will only recieve notifications from the proposals they are following
     emails_download:
       index:
         title: Téléchargement des courriels
@@ -916,6 +1024,15 @@ fr:
           without_confirmed_hide: En attente
         title: Propositions masquées
         no_hidden_proposals: Il n’y a aucune proposition masquée.
+    proposal_notifications:
+      index:
+        filter: Filtrer
+        filters:
+          all: Tous
+          with_confirmed_hide: Confirmé
+          without_confirmed_hide: En attente
+        title: Notifications masquées
+        no_hidden_proposals: Il n'y a pas de notifications masquées.
     settings:
       flash:
         updated: Valeur mise-à-jour
@@ -939,6 +1056,12 @@ fr:
             update: Configuration de la carte mise à jour avec succès.
           form:
             submit: Mettre à jour
+      setting: Fonctionnalité
+      setting_actions: Actions
+      setting_name: Paramètres
+      setting_status: Statut
+      setting_value: Valeur
+      no_description: "Aucune description"
     shared:
       booths_search:
         button: Rechercher
@@ -966,6 +1089,11 @@ fr:
       image: Image
       show_image: Afficher l'image
       moderated_content: "Vérifiez le contenu modéré par les modérateurs, et confirmez que la modération a été faite correctement."
+      view: Vue
+      proposal: Proposition
+      author: Auteur
+      content: Contenu
+      created_at: Créé le
     spending_proposals:
       index:
         geozone_filter_all: Tous les districts

@@ -11,6 +11,7 @@ This is a fork of [CONSUL](http://consulproject.org/en/) the eParticipation webs
 [![Build Status](https://travis-ci.org/CDJ11/CDJ.svg?branch=master)](https://travis-ci.org/CDJ11/CDJ)
 [![Maintainability](https://api.codeclimate.com/v1/badges/5c7abb32f3c8f7cbd4ef/maintainability)](https://codeclimate.com/github/CDJ11/CDJ/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5c7abb32f3c8f7cbd4ef/test_coverage)](https://codeclimate.com/github/CDJ11/CDJ/test_coverage)
+
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/consul/localized.svg)](https://crowdin.com/project/consul)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
 

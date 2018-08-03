@@ -1,51 +1,54 @@
 <header class="header">
   <div class="top-links">
     <div class="expanded row">
-      <!-- <%= render 'shared/locale_switcher' %> -->
-    </div>
+<!--       <%= render "shared/locale_switcher" %>
+ -->    </div>
   </div>
 
-  <div class="expanded row">
+  <div class="expanded row admin-top-bar">
+    <div class="title-bar" data-responsive-toggle="responsive_menu" data-hide-for="medium">
+      <button class="menu-icon" type="button" data-toggle="responsive_menu"></button>
+      <div class="title-bar-title"><%= t("application.menu")%></div>
+    </div>
+
     <div class="top-bar">
-
-      <span data-responsive-toggle="responsive_menu" data-hide-for="medium" class="float-right">
-        <span class="menu-icon dark" data-toggle></span>
-        <%= t("application.menu")%>
-      </span>
-
-      <div class="top-bar-title hide-for-small-only">
-        <h1>
-          <%= link_to namespaced_root_path do %>
-            <%= setting['org_name'] %>
-            <br><small><%= namespaced_header_title %></small>
-          <% end %>
-        </h1>
-      </div>
-
-      <div class="top-bar-title show-for-small-only">
-        <h1>
-          <%= link_to namespaced_root_path do %>
-            <%= 'CDJ' %> - <%= namespaced_header_title %>
-          <% end %>
-        </h1>
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">
+            <h1 class="hide-for-small-only">
+              <%= link_to namespaced_root_path do %>
+                <%= setting["org_name"] %>
+                <br><small><%= namespaced_header_title %></small>
+              <% end %>
+            </h1>
+            <h1 class="show-for-small-only">
+              <%= link_to namespaced_root_path do %>
+                <%= 'CDJ' %>
+                <br><small><%= namespaced_header_title %></small>
+              <% end %>
+            </h1>
+          </li>
+        </ul>
       </div>
 
       <div id="responsive_menu">
-
         <div class="top-bar-right">
-          <ul class="menu hide-for-small-only" data-responsive-menu="medium-dropdown">
+          <ul class="dropdown menu hide-for-small-only" data-dropdown-menu>
             <%= render "admin/shared/admin_shortcuts" %>
             <%= render "shared/admin_login_items" %>
+            <!-- <%= render "layouts/notification_item" %> -->
             <%= render "devise/menu/login_items" %>
           </ul>
 
-          <ul class="menu show-for-small-only subnavigation subnavigation-sm" data-responsive-menu="medium-dropdown">
+          <ul class="dropdown menu show-for-small-only subnavigation subnavigation-sm" data-dropdown-menu>
             <%= render "admin/shared/admin_shortcuts_sm" %>
             <%= render "shared/admin_login_items_sm" %>
+<!--             <%= render "layouts/notification_item" %> -->
             <%= render "devise/menu/login_items_sm" %>
           </ul>
-        </div>
 
+
+        </div>
       </div>
     </div>
   </div>

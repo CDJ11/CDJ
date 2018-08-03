@@ -15,7 +15,7 @@
         <span class="icon-proposals"></span>
         <strong><%= t("admin.menu.title_categories") %></strong>
       </a>
-      <ul <%= "class=is-active" if menu_tags? %>>
+      <ul <%= "class=is-active" if menu_settings? %>>
         <li <%= "class=active" if controller_name == "tags" %>>
           <%= link_to t("admin.menu.proposals_topics"), communication_tags_path %>
         </li>
@@ -36,13 +36,13 @@
         </li>
       </ul>
     </li>
-    
+
     <li class="section-title">
       <a href="#">
         <span class="icon-banner"></span>
         <strong><%= t("admin.menu.title_banners") %></strong>
       </a>
-      <ul <%= "class=is-active" if menu_banners? %>>
+      <ul <%= "class=is-active" if menu_customization? %>>
         <li <%= "class=active" if controller_name == "banners" %>>
           <%= link_to t("admin.menu.banner"), communication_banners_path %>
         </li>

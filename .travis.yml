@@ -7,17 +7,14 @@ rvm:
 cache: bundler
 bundler_args: --without development
 before_script:
-  - wget -N https://chromedriver.storage.googleapis.com/2.36/chromedriver_linux64.zip -P ~/
-  - unzip ~/chromedriver_linux64.zip -d ~/
-  - rm ~/chromedriver_linux64.zip
-  - sudo mv -f ~/chromedriver /usr/local/share/
-  - sudo chmod +x /usr/local/share/chromedriver
-  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
-  - for i in config/*.example; do cp "$i" "${i/.example}"; done
-  - bundle exec rake db:setup
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- wget -N https://chromedriver.storage.googleapis.com/2.36/chromedriver_linux64.zip -P ~/
+- unzip ~/chromedriver_linux64.zip -d ~/
+- rm ~/chromedriver_linux64.zip
+- sudo mv -f ~/chromedriver /usr/local/share/
+- sudo chmod +x /usr/local/share/chromedriver
+- sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+- for i in config/*.example; do cp "$i" "${i/.example}"; done
+- bundle exec rake db:setup
 script:
   - "bundle exec rake assets:precompile RAILS_ENV=test > /dev/null 2>&1"
   - "bin/knapsack_pro_rspec"

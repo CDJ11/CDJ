@@ -100,8 +100,7 @@ feature "Notifications" do
     expect(page).to have_content(notification2.notifiable_title)
   end
 
-  # TODO : Ambiguous match, found 2 elements matching visible css "#notifications"
-  xscenario "Bell" do
+  scenario "Bell" do
     create(:notification, user: user)
     visit root_path
 

@@ -1,17 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="es">
 
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title><%= content_for?(:title) ? yield(:title) : "Management" %></title>
-    <%= stylesheet_link_tag  "application", media: "all" %>
+    <%= render "layouts/common_head", default_title: "Management" %>
     <%= stylesheet_link_tag  "print", media: "print" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= content_for :head %>
-    <%= csrf_meta_tags %>
-    <%= favicon_link_tag "favicon.ico" %>
   </head>
 
   <body class="admin">
@@ -22,16 +15,19 @@
         </div>
       </div>
 
-      <div class="expanded row">
+      <div class="expanded row admin-top-bar">
         <div class="top-bar">
-
-            <div class="top-bar-title">
-              <h1>
-                <%= link_to management_root_path do %>
-                  <%= 'CDJ' %> - <%= t("management.dashboard.index.title") %>
-                <% end %>
-              </h1>
-            </div>
+          <div class="top-bar-left">
+            <ul class="menu">
+              <li class="menu-text">
+                <h1>
+                  <%= link_to management_root_path do %>
+                    <%= setting["org_name"] %>
+                    <br><small><%= t("management.dashboard.index.title") %></small>
+                  <% end %>
+                </h1>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

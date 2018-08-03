@@ -54,7 +54,6 @@ feature 'Emails' do
   end
 
   context 'Debate comments' do
-    # TODO i18n : broken because of test locale change
     scenario "Send email on debate comment" do
       user = create(:user, email_on_comment: true)
       debate = create(:debate, author: user)
@@ -86,7 +85,6 @@ feature 'Emails' do
   end
 
   context 'Budget investments comments' do
-    # TODO i18n : broken because of test locale change
     scenario 'Send email on budget investment comment' do
       user = create(:user, email_on_comment: true)
       investment = create(:budget_investment, author: user, budget: create(:budget))
@@ -122,7 +120,6 @@ feature 'Emails' do
       @proposal = create(:proposal)
     end
 
-    # TODO i18n : broken because of test locale change
     scenario 'Send email on topic comment' do
       user = create(:user, email_on_comment: true)
       topic = create(:topic, author: user, community: @proposal.community)
@@ -340,7 +337,7 @@ feature 'Emails' do
       visit new_management_user_invite_path
 
       fill_in "emails", with: " john@example.com, ana@example.com,isable@example.com "
-      click_button "Send invites"
+      click_button "Send invitations"
 
       expect(page).to have_content "3 invitations have been sent."
 

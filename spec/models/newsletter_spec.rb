@@ -38,8 +38,7 @@ describe Newsletter do
   end
 
   describe '#valid_segment_recipient?' do
-    # TODO i18n : broken because of test locale change
-    xit 'is false when segment_recipient value is invalid' do
+    it 'is false when segment_recipient value is invalid' do
       newsletter.update(segment_recipient: 'invalid_segment_name')
       error = 'The user recipients segment is invalid'
 

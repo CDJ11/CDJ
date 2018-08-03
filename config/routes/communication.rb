@@ -1,7 +1,7 @@
 namespace :communication do
   root to: "dashboard#index"
 
-  resources :articles, path: '/news', only: [:index, :new, :create, :edit, :update, :show, :destroy]
+  # resources :articles, path: '/actualites', only: [:index, :new, :create, :edit, :update, :show, :destroy]
 
   resources :tags, only: [:index, :create, :update, :destroy]
 
