@@ -5,22 +5,24 @@
 ///////////////////////////////////////
 
 .top-bar {
-  //height: 8.5rem;
-  .top-bar-title {
+  .menu-text {
     margin: 1rem;
     .logo {
       border-radius: 50%;
-      border: solid 3px $white;
-      height: 100px;
+      border: solid 2px $white;
+      height: 50px;
       width: auto;
+      @include breakpoint(medium) {
+        border: solid 3px $white;
+        height: 100px;
+      }
     }
   }
   .top-bar-right {
     @include breakpoint(medium) {
-      margin-top: 2rem;
       .menu {
-        .login a {
-          margin-top: 1.3rem;
+        .login {
+          align-self: flex-end;
         }
         .signup {
           text-align: right;
@@ -28,11 +30,13 @@
         li {
           a {
             font-size: 1.3rem;
-            padding: 1rem;
           }
         }
       }
     }
+  }
+  .menu > li {
+    width: auto;
   }
 }
 
@@ -63,6 +67,7 @@ $subnavigation-sm-btn-width: 130px;
 
 .subnavigation.subnavigation-sm {
   padding-right: 0;
+  list-style: none;
   .columns:last-child {
     float: left;
   }
@@ -99,8 +104,8 @@ $subnavigation-sm-btn-width: 130px;
   left: auto;
   @include breakpoint(medium) {
     font-size: 0.625rem;
-    left: 12px;
-    top: 6px;
+    left: 27px;
+    top: 9px;
     right: auto;
   }
 }
@@ -359,4 +364,5 @@ $subnavigation-sm-btn-width: 130px;
 
 .admin .top-bar [class^="icon-"].subnavigation-icon {
   font-size: 4rem;
+  display: block;
 }

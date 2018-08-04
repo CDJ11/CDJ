@@ -1,13 +1,7 @@
+require_dependency Rails.root.join('app', 'controllers', 'users_controller').to_s
+
 class UsersController < ApplicationController
   has_filters %w{proposals debates budget_investments comments articles follows}, only: :show
-
-  load_and_authorize_resource
-  helper_method :author?
-  helper_method :valid_interests_access?
-
-  def show
-    load_filtered_activity if valid_access?
-  end
 
   private
 
@@ -18,7 +12,7 @@ class UsersController < ApplicationController
                           budget_investments: (Setting['feature.budgets'] ? Budget::Investment.where(author_id: @user.id).count : 0),
                           comments: only_active_commentables.count,
                           articles: (Setting['feature.articles'] ? Article.published.where(author_id: @user.id).count : 0),
-                          follows: @user.follows.count)
+                          follows: @user.follows.map(&:followable).compact.count)
     end
 
     def load_filtered_activity
@@ -58,57 +52,6 @@ class UsersController < ApplicationController
 
     def load_articles
       @articles = Article.published.where(author_id: @user.id).order(created_at: :desc).page(params[:page])
-    end
-
-    def load_proposals
-      @proposals = Proposal.where(author_id: @user.id).order(created_at: :desc).page(params[:page])
-    end
-
-    def load_debates
-      @debates = Debate.where(author_id: @user.id).order(created_at: :desc).page(params[:page])
-    end
-
-    def load_comments
-      @comments = only_active_commentables.includes(:commentable).order(created_at: :desc).page(params[:page])
-    end
-
-    def load_budget_investments
-      @budget_investments = Budget::Investment.where(author_id: @user.id).order(created_at: :desc).page(params[:page])
-    end
-
-    def load_follows
-      @follows = @user.follows.group_by(&:followable_type)
-    end
-
-    def valid_access?
-      @user.public_activity || authorized_current_user?
-    end
-
-    def valid_interests_access?
-      @user.public_interests || authorized_current_user?
-    end
-
-    def author?(proposal)
-      proposal.author_id == current_user.id if current_user
-    end
-
-    def authorized_current_user?
-      @authorized_current_user ||= current_user && (current_user == @user || current_user.moderator? || current_user.administrator?)
-    end
-
-    def all_user_comments
-      Comment.not_valuations.not_as_admin_or_moderator.where(user_id: @user.id)
-    end
-
-    def only_active_commentables
-      disabled_commentables = []
-      disabled_commentables << "Debate" unless Setting['feature.debates']
-      disabled_commentables << "Budget::Investment" unless Setting['feature.budgets']
-      if disabled_commentables.present?
-        all_user_comments.where("commentable_type NOT IN (?)", disabled_commentables)
-      else
-        all_user_comments
-      end
     end
 
 end

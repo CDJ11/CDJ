@@ -14,7 +14,7 @@ feature 'Admin budgets' do
     end
 
     after do
-      Setting['feature.budgets'] = true
+      Setting['feature.budgets'] = nil
     end
 
     scenario 'Disabled with a feature flag' do
@@ -24,6 +24,14 @@ feature 'Admin budgets' do
   end
 
   context 'Index' do
+
+    background do
+      Setting['feature.budgets'] = true
+    end
+
+    after do
+      Setting['feature.budgets'] = nil
+    end
 
     scenario 'Displaying budgets' do
       budget = create(:budget)
@@ -85,6 +93,14 @@ feature 'Admin budgets' do
 
   context 'New' do
 
+    background do
+      Setting['feature.budgets'] = true
+    end
+
+    after do
+      Setting['feature.budgets'] = nil
+    end
+
     scenario 'Create budget' do
       visit admin_budgets_path
       click_link 'Create new budget'
@@ -109,6 +125,14 @@ feature 'Admin budgets' do
   end
 
   context 'Destroy' do
+
+    background do
+      Setting['feature.budgets'] = true
+    end
+
+    after do
+      Setting['feature.budgets'] = nil
+    end
 
     let!(:budget) { create(:budget) }
     let(:heading) { create(:budget_heading, group: create(:budget_group, budget: budget)) }
@@ -169,6 +193,14 @@ feature 'Admin budgets' do
   context 'Update' do
 
     background do
+      Setting['feature.budgets'] = true
+    end
+
+    after do
+      Setting['feature.budgets'] = nil
+    end
+
+    background do
       create(:budget)
     end
 
@@ -186,7 +218,16 @@ feature 'Admin budgets' do
   end
 
   context "Calculate Budget's Winner Investments" do
-    scenario 'For a Budget in reviewing balloting' do
+
+    background do
+      Setting['feature.budgets'] = true
+    end
+
+    after do
+      Setting['feature.budgets'] = nil
+    end
+
+    scenario 'For a Budget in reviewing balloting', :js do
       budget = create(:budget, phase: 'reviewing_ballots')
       group = create(:budget_group, budget: budget)
       heading = create(:budget_heading, group: group, price: 4)
@@ -197,8 +238,10 @@ feature 'Admin budgets' do
       selected = create(:budget_investment, :selected, heading: heading, price: 2, ballot_lines_count: 1)
 
       visit edit_admin_budget_path(budget)
+
       expect(page).not_to have_content 'See results'
       click_link 'Calculate Winner Investments'
+
       expect(page).to have_content 'Winners being calculated, it may take a minute.'
       expect(page).to have_content winner.title
       expect(page).not_to have_content unselected.title

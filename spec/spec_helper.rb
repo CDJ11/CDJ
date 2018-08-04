@@ -20,6 +20,7 @@ RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
   config.include(CommonActions)
+  config.include(ActiveSupport::Testing::TimeHelpers)
   config.before(:suite) do
     DatabaseCleaner.clean_with :truncation
   end
@@ -43,10 +44,11 @@ RSpec.configure do |config|
   config.before do |example|
     DatabaseCleaner.strategy = :transaction
     I18n.locale = :en
+    Globalize.locale = I18n.locale
     load Rails.root.join('db', 'seeds.rb').to_s
-    load Rails.root.join('db', 'custom_seeds.rb').to_s
+    load Rails.root.join('db', 'custom_seeds.rb').to_s # Custom CDJ Aude
     Setting["feature.user.skip_verification"] = nil
-    Setting["feature.cdj_aude"] = nil
+    Setting["feature.cdj_aude"] = nil # Custom CDJ Aude
   end
 
   config.before(:each, type: :feature) do

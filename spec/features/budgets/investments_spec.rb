@@ -582,7 +582,7 @@ feature 'Budget Investments' do
 
       visit budget_investments_path(budget, heading_id: heading.id)
       click_link 'highest rated'
-      expect(page).to have_selector('a.active', text: 'highest rated')
+      expect(page).to have_selector('a.is-active', text: 'highest rated')
 
       within '#budget-investments' do
         expect(best_proposal.title).to appear_before(medium_proposal.title)
@@ -958,6 +958,76 @@ feature 'Budget Investments' do
     expect(page).to have_content("This investment project has been marked as not feasible and will not go to balloting phase")
   end
 
+  scenario "Show (selected budget investment)" do
+    user = create(:user)
+    login_as(user)
+
+    investment = create(:budget_investment,
+                        :feasible,
+                        :finished,
+                        :selected,
+                        budget: budget,
+                        group: group,
+                        heading: heading)
+
+    visit budget_investment_path(budget_id: budget.id, id: investment.id)
+
+    expect(page).to have_content("This investment project has been selected for balloting phase")
+  end
+
+  scenario "Show (winner budget investment)" do
+    user = create(:user)
+    login_as(user)
+
+    investment = create(:budget_investment,
+                        :feasible,
+                        :finished,
+                        :selected,
+                        :winner,
+                        budget: budget,
+                        group: group,
+                        heading: heading)
+
+    visit budget_investment_path(budget_id: budget.id, id: investment.id)
+
+    expect(page).to have_content("Winning investment project")
+  end
+
+  scenario "Show (not selected budget investment)" do
+    user = create(:user)
+    login_as(user)
+
+    investment = create(:budget_investment,
+                        :feasible,
+                        :finished,
+                        budget: budget,
+                        group: group,
+                        heading: heading,
+                        unfeasibility_explanation: 'Local government is not competent in this matter')
+
+    visit budget_investment_path(budget_id: budget.id, id: investment.id)
+
+    expect(page).to have_content("This investment project has not been selected for balloting phase")
+  end
+
+  scenario "Show (unfeasible budget investment with valuation not finished)" do
+    user = create(:user)
+    login_as(user)
+
+    investment = create(:budget_investment,
+                        :unfeasible,
+                        valuation_finished: false,
+                        budget: budget,
+                        group: group,
+                        heading: heading,
+                        unfeasibility_explanation: 'Local government is not competent in this matter')
+
+    visit budget_investment_path(budget_id: budget.id, id: investment.id)
+
+    expect(page).not_to have_content("Unfeasibility explanation")
+    expect(page).not_to have_content("Local government is not competent in this matter")
+  end
+
   scenario "Show (not selected budget investment)" do
     user = create(:user)
     login_as(user)
@@ -1018,6 +1088,16 @@ feature 'Budget Investments' do
       expect(page).not_to have_content(Date.current)
       expect(page.find("#image_#{first_milestone.id}")['alt']).to have_content(image.title)
       expect(page).to have_link(document.title)
+      expect(page).to have_link("https://consul.dev")
+      expect(page).to have_content(first_milestone.status.name)
+    end
+
+    select('Español', from: 'locale-switcher')
+
+    find("#tab-milestones-label").click
+
+    within("#tab-milestones") do
+      expect(page).to have_content('Último hito con el link https://consul.dev')
       expect(page).to have_link("https://consul.dev")
     end
 
@@ -1219,6 +1299,27 @@ feature 'Budget Investments' do
 
   end
 
+  context "Publishing prices phase" do
+
+    background do
+      budget.update(phase: "publishing_prices")
+    end
+
+    scenario "Heading index - should show only selected investments" do
+      investment1 = create(:budget_investment, :selected, heading: heading, price: 10000)
+      investment2 = create(:budget_investment, :selected, heading: heading, price: 15000)
+      investment3 = create(:budget_investment, heading: heading, price: 30000)
+
+      visit budget_investments_path(budget, heading: heading)
+
+      within("#budget-investments") do
+        expect(page).to have_content investment1.title
+        expect(page).to have_content investment2.title
+        expect(page).not_to have_content investment3.title
+      end
+    end
+  end
+
   context "Balloting Phase" do
 
     background do
@@ -1258,7 +1359,7 @@ feature 'Budget Investments' do
       visit budget_investments_path(budget, heading_id: heading.id)
 
       click_link 'by price'
-      expect(page).to have_selector('a.active', text: 'by price')
+      expect(page).to have_selector('a.is-active', text: 'by price')
 
       within '#budget-investments' do
         expect(high_investment.title).to appear_before(mid_investment.title)

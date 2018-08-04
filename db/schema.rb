@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180625131118) do
+ActiveRecord::Schema.define(version: 20180711224810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,8 +79,15 @@ ActiveRecord::Schema.define(version: 20180625131118) do
     t.datetime "updated_at",                   null: false
   end
 
+  create_table "banner_sections", force: :cascade do |t|
+    t.integer  "banner_id"
+    t.integer  "web_section_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "banners", force: :cascade do |t|
-    t.string   "title",           limit: 80
+    t.string   "title",            limit: 80
     t.string   "description"
     t.string   "target_url"
     t.string   "style"
@@ -88,8 +95,10 @@ ActiveRecord::Schema.define(version: 20180625131118) do
     t.date     "post_started_at"
     t.date     "post_ended_at"
     t.datetime "hidden_at"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.text     "background_color"
+    t.text     "font_color"
   end
 
   add_index "banners", ["hidden_at"], name: "index_banners_on_hidden_at", using: :btree
@@ -153,7 +162,20 @@ ActiveRecord::Schema.define(version: 20180625131118) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.datetime "publication_date"
+    t.integer  "status_id"
   end
+
+  add_index "budget_investment_milestones", ["status_id"], name: "index_budget_investment_milestones_on_status_id", using: :btree
+
+  create_table "budget_investment_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "hidden_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "budget_investment_statuses", ["hidden_at"], name: "index_budget_investment_statuses_on_hidden_at", using: :btree
 
   create_table "budget_investments", force: :cascade do |t|
     t.integer  "author_id"
@@ -877,8 +899,12 @@ ActiveRecord::Schema.define(version: 20180625131118) do
     t.text     "body"
     t.integer  "author_id"
     t.integer  "proposal_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "moderated",         default: false
+    t.datetime "hidden_at"
+    t.datetime "ignored_at"
+    t.datetime "confirmed_hide_at"
   end
 
   create_table "proposals", force: :cascade do |t|
@@ -1152,6 +1178,8 @@ ActiveRecord::Schema.define(version: 20180625131118) do
     t.string   "postal_code"
     t.string   "city"
     t.boolean  "ca_wanabee"
+    t.boolean  "recommended_debates",                       default: true
+    t.boolean  "recommended_proposals",                     default: true
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -1245,6 +1273,30 @@ ActiveRecord::Schema.define(version: 20180625131118) do
   add_index "votes", ["signature_id"], name: "index_votes_on_signature_id", using: :btree
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
+
+  create_table "web_sections", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "widget_cards", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "link_text"
+    t.string   "link_url"
+    t.string   "label"
+    t.boolean  "header",      default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "widget_feeds", force: :cascade do |t|
+    t.string   "kind"
+    t.integer  "limit",      default: 3
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   add_foreign_key "administrators", "users"
   add_foreign_key "animators", "users"

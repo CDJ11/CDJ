@@ -4,11 +4,6 @@
   <%= render "shared/canonical", href: root_url %>
 <% end %>
 
-<% provide :social_media_meta_tags do %>
-  <%= render "shared/social_media_meta_tags",
-              social_url: root_url %>
-<% end %>
-
 <div class="jumbo highlight">
   <div class="row">
     <div class="small-12 medium-6 column">
@@ -26,16 +21,19 @@
   </div>
 </div>
 
-<% if feature?("user.recommendations") && (@recommended_debates.present? || @recommended_proposals.present?) %>
-  <%= render "recommended",
-              recommended_debates: @recommended_debates,
-              recommended_proposals: @recommended_proposals %>
-  <hr>
+<% if has_banners? %>
+  <%= render "shared/banner" %>
 <% end %>
 
-<% cache [locale_and_user_status, @featured_debates, @featured_proposals, 'featured'] do %>
-  <main>
-    <div class="small-12 column text-center">
+<% provide :social_media_meta_tags do %>
+  <%= render "shared/social_media_meta_tags",
+              social_url: root_url %>
+<% end %>
+
+<!-- <%= render "header", header: @header %> -->
+
+<main>
+      <div class="small-12 column text-center">
       <div class="row margin padding">
         <div class="small-12 medium-3 column">
           <%= image_tag("icon_home_debates", size: "96x96", alt: "", title: t("welcome.debates.title")) %>
@@ -59,5 +57,23 @@
         </div>
       </div>
     </div>
-  </main>
-<% end %>
+
+  <%= render "feeds" %>
+
+
+  <div class="row">
+    <div class="small-12 column <%= 'large-8' if feed_processes_enabled? %>">
+      <%= render "cards" %>
+    </div>
+
+    <div class="small-12 large-4 column">
+      <%= render "processes" %>
+    </div>
+  </div>
+
+  <% if feature?("user.recommendations") && (@recommended_debates.present? || @recommended_proposals.present?) %>
+    <%= render "recommended",
+                recommended_debates: @recommended_debates,
+                recommended_proposals: @recommended_proposals %>
+  <% end %>
+</main>

@@ -100,19 +100,20 @@ feature "Notifications" do
     expect(page).to have_content(notification2.notifiable_title)
   end
 
-  # TODO : Ambiguous match, found 2 elements matching visible css "#notifications"
+  # TODO CDJ
+  # seems to be a problem with counter_cache, but no time to fix it right now
   xscenario "Bell" do
     create(:notification, user: user)
     visit root_path
 
-    within("#notifications") do
+    within("#notifications", match: :first) do
       expect(page).to have_css(".icon-circle")
     end
 
     click_notifications_icon
     first(".notification a").click
 
-    within("#notifications") do
+    within("#notifications", match: :first) do
       expect(page).to_not have_css(".icon-circle")
     end
   end
