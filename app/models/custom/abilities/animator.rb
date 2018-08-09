@@ -22,6 +22,7 @@ module Abilities
       can [:manage], Article
 
       # User management -----------------------------------
+      can [:cdj_show, :print_password, :reset_password, :change_password], User
 
       # Modération ----------------------------------------
 
