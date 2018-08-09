@@ -20,7 +20,7 @@ Par exemple, pour comparer la v0.15 et la v0.16, lors du passage à la v0.16 :
 
 Etre attentif à tout changement intervenu sur des fichiers qui ont été customisé.
 
-Etre attentif à tout changement dans les menus admin, car des nouveaux fichiers sont des copies, placés ailleurs, de fichiers existants.
+Etre attentif à tout changement dans les menus admin, car certains nouveaux fichiers sont des copies, placés ailleurs, de fichiers existants.
 
 
 | Fichier nouveau                                                 | Fichier source d'inspiration                    |
