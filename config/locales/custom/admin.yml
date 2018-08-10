@@ -7,6 +7,7 @@ fr:
       title_categories: "Catégories"
       title_profiles: "Utilisateurs"
       title_banners: "Bannières"
+      proposals_topics: Tags des projets
     articles:
       delete:
         success: Article supprimé avec succès
@@ -25,4 +26,13 @@ fr:
         delete: Supprimer
       search:
         title: "Membre du CA : Recherche d'utilisateur"
-
+    tags:
+      create: Créer un tag
+      destroy: Supprimer le tag
+      index:
+        add_tag: Ajouter un nouveau tag de projet
+        title: Tags de projets
+        topic: tag
+        help: "Quand un utilisateur créé une projet, les thèmes suivants sont proposés comme tags par défaut."
+      name:
+        placeholder: Saisir le nom du tag

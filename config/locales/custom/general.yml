@@ -248,6 +248,7 @@ fr:
     tags_cloud:
       districts: "Cantons"
       districts_list: "Liste des cantons"
+      tags: Derniers tags
     unflag: "Retirer mon signalement"
   stats:
     index:
