@@ -36,3 +36,6 @@ fr:
         help: "Quand un utilisateur créé une projet, les thèmes suivants sont proposés comme tags par défaut."
       name:
         placeholder: Saisir le nom du tag
+    segment_recipient:
+      proposal_authors: Auteurs de projets
+      animators: Membres du CA

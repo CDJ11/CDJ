@@ -13,3 +13,5 @@ module Consul
     config.autoload_paths << "#{Rails.root}/app/helpers/custom"
   end
 end
+
+require "./lib/custom/user_segments.rb"
