@@ -277,6 +277,12 @@ fr:
     spending_proposals:
       not_verified: Seuls les utilisateurs vérifiés peuvent voter sur les projets; %{verify_account}.
   welcome:
+    feed:
+      most_active:
+        debates: "Idées les plus actives"
+        proposals: "Projets les plus actifs"
+      see_all_debates: Voir toutes les idées
+      see_all_proposals: Voir tous les projets
     debates:
       description: Partage tes idées. Discutes-en avec les autres membres et donne ton avis sur les idées existantes. Si ton idée reçoit un certain nombre de like, elle sera étudiée pour devenir un projet
       title: 1- Idée
