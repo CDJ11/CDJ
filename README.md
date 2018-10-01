@@ -71,38 +71,48 @@ Dans l'[interface développeur de facebook](https://developers.facebook.com/apps
 
 ## Déploiements
 
-```bash
-git clone https://github.com/CDJ11/CDJ.git
-cd consul
-bundle install
-cp config/database.yml.example config/database.yml
-cp config/secrets.yml.example config/secrets.yml
-```
-
-Puis 2 options :
-
-### Déployer avec import de la BDD originelle : 
-
-Récupérer une copie de la base de donnée à importer (dossier CDJ11_OSP) et la copier dans `doc/custom`.
-
-Personnaliser si nécessaire le script `/lib/custom/import_db.sh`, ligne 4 :
-
-  psql NOM_BASE_DESTINATION < doc/custom/NOM_FICHIER_A_IMPORTER.sql
+Le projet utilise capistrano
 
 ```bash
-chmod 755 lib/custom/import_db.sh #si fichier non executable
-./lib/custom/import_db.sh 
+# sur votre machine
+# Au 1er déploiement pour créer le fichier de config
+cap production puma:config 
+
+# Par la suite
+cap production deploy       # Déploiement simple sur l'environnement de production (avec les migrations)
+cap production puma:restart # Relance l'instance puma
+cap production deploy:seed  # Génération des seeds sur l'environnement de production
 ```
 
-Le script peut renvoyer un message d'erreur en fin de parcours (`duplicate key` lors de la creation d'un utilisateur admin), qui logiquement n'empêche pas la bonne exécution de l'intégralité du script.
+### Import de la base de donnée originelle du CDJ
 
-### Déployer sans import de la BDD originelle : 
+Une première version du CDJ pré-existait, avec des données qu'il a fallu importer. Les migrations n'étant pas à jour sur le projet originel, il est nécessaire de faire l'import en plusieurs temps : 
+- migrer jusqu'à une certaine version des migrations,
+- faire l'import
+- faire la suite des migrations jusqu'aux migrations actuelles
 
+Pour des questions de droit casse-bonbons, la procédure d'installation est un peu bancale, et clairement améliorable. Vu que la procédure suivante est supposée n'être faite qu'une fois, à l'installation du projet, je n'ai pas poussé plus loin mes recherches.
+
+**Pré-requis** : avoir en local la BDD à importer (actuellement disponible dans le dossier drive du projet, et gitignoré pour des questions de confidentialité des données). 
+
+1. Copier la BDD de votre serveur local sur le serveur de prod :
+
+```bash
+scp  -P 124 chemin-vers-le-fichier.sql USER@ADRESSE-SERVEUR:/home/deploy/www/cdj_aude/current/doc/custom/ 
 ```
-bin/rake db:create
-bin/rake db:migrate
-bin/rake db:seed
-bin/rake db:custom_seed
+
+2. Etapes de l'import :
+
+```bash
+# Sur serveur, avec le user mako, couper temporairement les connections à la db : 
+sudo service postgresql restart
+# En local
+cap production deploy:prepare_import_db
+# Sur serveur, avec un user root : 
+cd /home/deploy/www/cdj_aude/current
+psql cdj_aude_production < doc/custom/extract_db_insert_180326.sql
+# En local
+cap production deploy:finish_import_db
 ```
 
 En production penser à bloquer l'accès aux comptes admin et verified.
