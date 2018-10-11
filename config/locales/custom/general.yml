@@ -192,6 +192,7 @@ fr:
         edit: "Avant qu'il soit partagé, vous pouvez changer le texte autant que vous le désirez."
         view_proposal: Pas maintenant, revenir au projet
       already_supported: Vous avez déjà soutenu ce projet. Partagez-le !
+      reason_for_supports_necessary: ""
       support_title: Soutenir ce projet
       archived: "Ce projet a été archivée et ne peut recueillir de soutiens."
       successful: "Ce projet a atteint le nombre de soutiens requis et sera soumise au vote lors du %{voting}."
