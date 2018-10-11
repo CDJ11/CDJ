@@ -1,7 +1,74 @@
 section "Creating custom Settings" do
-  Setting['org_name'] = 'Conseil Départemental des Jeunes'
-  Setting['place_name'] = 'Aude'
+  # coding: utf-8
+  # Default admin user (change password after first deploy to a server!)
+  # if Administrator.count == 0 && !Rails.env.test?
+  #   admin = User.create!(username: 'admin', email: 'admin@consul.dev', password: '12345678', password_confirmation: '12345678', confirmed_at: Time.current, terms_of_service: "1")
+  #   admin.create_administrator
+  # end
+
+  # Names for the moderation console, as a hint for moderators
+  # to know better how to assign users with official positions
+  # Setting["official_level_1_name"] = "Empleados públicos"
+  # Setting["official_level_2_name"] = "Organización Municipal"
+  # Setting["official_level_3_name"] = "Directores generales"
+  # Setting["official_level_4_name"] = "Concejales"
+  # Setting["official_level_5_name"] = "Alcaldesa"
+
+  # Max percentage of allowed anonymous votes on a debate
+  Setting["max_ratio_anon_votes_on_debates"] = 50
+
+  # Max votes where a debate is still editable
+  Setting["max_votes_for_debate_edit"] = 1000
+
+  # Max votes where a proposal is still editable
+  Setting["max_votes_for_proposal_edit"] = 1000
+
+  # Max length for comments
+  Setting['comments_body_max_length'] = 1000
+
+  # Prefix for the Proposal codes
+  Setting["proposal_code_prefix"] = 'CDJ'
+
+  # Number of votes needed for proposal success
+  Setting["votes_for_proposal_success"] = 30
+
+  # Months to archive proposals
+  Setting["months_to_archive_proposals"] = 12
+
+  # Users with this email domain will automatically be marked as level 1 officials
+  # Emails under the domain's subdomains will also be included
+  # Setting["email_domain_for_officials"] = ''
+
+  # Code to be included at the top (inside <head>) of every page (useful for tracking)
+  # Setting['per_page_code_head'] = ''
+
+  # Code to be included at the top (inside <body>) of every page
+  # Setting['per_page_code_body'] = ''
+
+  # Social settings
+  # Setting["twitter_handle"] = nil
+  # Setting["twitter_hashtag"] = nil
+  # Setting["facebook_handle"] = nil
+  # Setting["youtube_handle"] = nil
+  # Setting["telegram_handle"] = nil
+  # Setting["instagram_handle"] = nil
+  # Setting["blog_url"] = nil
+  # Setting["transparency_url"] = nil
+  # Setting["opendata_url"] = "/opendata"
+
+  # Public-facing URL of the app.
   Setting["url"] = "http://cdj.aude.fr/"
+
+  # CONSUL installation's organization name
+  Setting["org_name"] = "Conseil Départemental des Jeunes"
+
+  # CONSUL installation place name (City, Country...)
+  Setting["place_name"] = "Aude"
+
+  # Meta tags for SEO
+  Setting['meta_title'] = "Conseil départemental des jeunes de l'Aude"
+  Setting['meta_description'] = "Conseil départemental des jeunes de l'Aude"
+  Setting['meta_keywords'] = 'participation, jeunes, citoyenneté'
 
   # Feature flags
   Setting['feature.articles'] = true
@@ -24,53 +91,45 @@ section "Creating custom Settings" do
   Setting['feature.allow_images'] = true
   Setting['feature.guides'] = nil
 
-  # SEO
-  Setting['meta_title'] = "Conseil départemental des jeunes de l'Aude"
-  Setting['meta_description'] = "Conseil départemental des jeunes de l'Aude"
-  Setting['meta_keywords'] = 'participation, jeunes, citoyenneté'
+  # Banner styles
+  Setting['banner-style.banner-style-one']   = "Banner style 1"
+  Setting['banner-style.banner-style-two']   = "Banner style 2"
+  Setting['banner-style.banner-style-three'] = "Banner style 3"
 
-  # Settings extraient de l ancienne BDD
-  Setting['min_age_to_participate'] = '16'
+  # Banner images
+  Setting['banner-img.banner-img-one']   = "Banner image 1"
+  Setting['banner-img.banner-img-two']   = "Banner image 2"
+  Setting['banner-img.banner-img-three'] = "Banner image 3"
+
+  # Proposal notifications
+  Setting['proposal_notification_minimum_interval_in_days'] = 1
+  Setting['direct_message_max_per_day'] = 3
+
+  # Email settings
+  Setting['mailer_from_name'] = 'CDJ Aude'
+  Setting['mailer_from_address'] = 'noreply@cdj.aude.fr'
+
+  # Verification settings
+  # Setting['verification_offices_url'] = 'http://oficinas-atencion-ciudadano.url/'
+  Setting['min_age_to_participate'] = 16
+
+  # Proposal improvement url path ('/help/proposal-improvement')
+  # Setting['proposal_improvement_path'] = nil
+
+  # City map feature default configuration (Greenwich)
+  Setting['map_latitude'] = 43.21667
+  Setting['map_longitude'] = 2.35
+  Setting['map_zoom'] = 9
+
+  # Related content
+  Setting['related_content_score_threshold'] = -0.3
+
+  Setting['feature.homepage.widgets.feeds.proposals'] = true
+  Setting['feature.homepage.widgets.feeds.debates'] = true
+  Setting['feature.homepage.widgets.feeds.processes'] = false
+
+  # Settings Custom CDJ
   Setting['max_age_to_participate'] = '26'
-  Setting['proposal_code_prefix'] = 'CDJ'
-  Setting['votes_for_proposal_success'] = '30'
   Setting['votes_for_debate_success'] = '30'
 
-  #Setting.create(key: 'official_level_1_name',
-  #               value: I18n.t('seeds.settings.official_level_1_name'))
-  #Setting.create(key: 'official_level_2_name',
-  #               value: I18n.t('seeds.settings.official_level_2_name'))
-  #Setting.create(key: 'official_level_3_name',
-  #               value: I18n.t('seeds.settings.official_level_3_name'))
-  #Setting.create(key: 'official_level_4_name',
-  #               value: I18n.t('seeds.settings.official_level_4_name'))
-  #Setting.create(key: 'official_level_5_name',
-  #               value: I18n.t('seeds.settings.official_level_5_name'))
-  #Setting.create(key: 'max_ratio_anon_votes_on_debates', value: '50')
-  #Setting.create(key: 'max_votes_for_debate_edit', value: '1000')
-  #Setting.create(key: 'max_votes_for_proposal_edit', value: '1000')
-  #Setting.create(key: 'months_to_archive_proposals', value: '12')
-  #Setting.create(key: 'comments_body_max_length', value: '1000')
-
-  #Setting.create(key: 'twitter_handle', value: nil)
-  #Setting.create(key: 'twitter_hashtag', value: nil)
-  #Setting.create(key: 'facebook_handle', value: nil)
-  #Setting.create(key: 'youtube_handle', value: nil)
-  #Setting.create(key: 'telegram_handle', value: nil)
-  #Setting.create(key: 'instagram_handle', value: nil)
-  #Setting.create(key: 'blog_url', value: nil)
-  #Setting.create(key: 'url', value: 'http://localhost:3000')
-
-  #Setting.create(key: 'per_page_code_head', value: "")
-  #Setting.create(key: 'per_page_code_body', value: "")
-  #Setting.create(key: 'comments_body_max_length', value: '1000')
-  Setting.create(key: 'mailer_from_name', value: 'CDJ Aude')
-  Setting.create(key: 'mailer_from_address', value: 'noreply@cdj.aude.fr')
-  #Setting.create(key: 'verification_offices_url', value: 'http://oficinas-atencion-ciudadano.url/')
-  #Setting.create(key: 'min_age_to_participate', value: '16')
-  #Setting.create(key: 'proposal_improvement_path', value: nil)
-  #Setting.create(key: 'map_latitude', value: 40.41)
-  #Setting.create(key: 'map_longitude', value: -3.7)
-  #Setting.create(key: 'map_zoom', value: 10)
-  #Setting.create(key: 'related_content_score_threshold', value: -0.3)
 end
