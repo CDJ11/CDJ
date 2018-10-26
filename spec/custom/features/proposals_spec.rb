@@ -35,6 +35,56 @@ feature 'Proposals' do
     expect(page.html).not_to include '&lt;p&gt;This is'
   end
 
+  context("Search") do
+    context "Advanced search" do
+      context "Search by date" do
+        scenario "Search by multiple filters", :js do
+          ana  = create :user, official_level: 1
+          john = create :user, official_level: 1
+
+          proposal1 = create(:proposal, title: "Get Schwifty",   author: ana,  created_at: 1.minute.ago)
+          proposal2 = create(:proposal, title: "Hello Schwifty", author: john, created_at: 2.days.ago)
+          proposal3 = create(:proposal, title: "Save the forest")
+
+          visit proposals_path
+
+          click_link "Advanced search"
+          fill_in "Write the text", with: "Schwifty"
+          # select Setting['official_level_1_name'], from: "advanced_search_official_level"
+          select "Last 24 hours", from: "js-advanced-search-date-min"
+
+          click_button "Filter"
+
+          expect(page).to have_content("There is 1 citizen proposal")
+
+          within("#proposals") do
+            expect(page).to have_content(proposal1.title)
+          end
+        end
+
+        scenario "Maintain advanced search criteria", :js do
+          visit proposals_path
+          click_link "Advanced search"
+
+          fill_in "Write the text", with: "Schwifty"
+          # select Setting['official_level_1_name'], from: "advanced_search_official_level"
+          select "Last 24 hours", from: "js-advanced-search-date-min"
+
+          click_button "Filter"
+
+          expect(page).to have_content("citizen proposals cannot be found")
+
+          within "#js-advanced-search" do
+            expect(page).to have_selector("input[name='search'][value='Schwifty']")
+            # expect(page).to have_select('advanced_search[official_level]', selected: Setting['official_level_1_name'])
+            expect(page).to have_select('advanced_search[date_min]', selected: 'Last 24 hours')
+          end
+        end
+      end
+    end
+  end
+
+
   # custom tests CDJ Aude -----------------------
 
   context 'with with cdj_aude feature' do
