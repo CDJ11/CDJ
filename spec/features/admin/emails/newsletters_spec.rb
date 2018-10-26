@@ -76,7 +76,8 @@ feature "Admin newsletter emails" do
     expect(page).to have_content "This is a body"
   end
 
-  scenario "Update" do
+  # CDJ Aude Custom : fixed in custom spec
+  xscenario "Update" do
     newsletter = create(:newsletter)
 
     visit admin_newsletters_path
