@@ -579,9 +579,10 @@ feature 'Debates' do
         end
       end
 
+      # CDJ Aude Custom : author types are unused and hidden
       context "Search by author type" do
 
-        scenario "Public employee", :js do
+        xscenario "Public employee", :js do
           ana = create :user, official_level: 1
           john = create :user, official_level: 2
 
@@ -604,7 +605,7 @@ feature 'Debates' do
           end
         end
 
-        scenario "Municipal Organization", :js do
+        xscenario "Municipal Organization", :js do
           ana = create :user, official_level: 2
           john = create :user, official_level: 3
 
@@ -627,7 +628,7 @@ feature 'Debates' do
           end
         end
 
-        scenario "General director", :js do
+        xscenario "General director", :js do
           ana = create :user, official_level: 3
           john = create :user, official_level: 4
 
@@ -650,7 +651,7 @@ feature 'Debates' do
           end
         end
 
-        scenario "City councillor", :js do
+        xscenario "City councillor", :js do
           ana = create :user, official_level: 4
           john = create :user, official_level: 5
 
@@ -673,7 +674,7 @@ feature 'Debates' do
           end
         end
 
-        scenario "Mayoress", :js do
+        xscenario "Mayoress", :js do
           ana = create :user, official_level: 5
           john = create :user, official_level: 4
 
@@ -828,7 +829,8 @@ feature 'Debates' do
           end
         end
 
-        scenario "Search by multiple filters", :js do
+        # CDJ Aude Custom : fixed in custom spec
+        xscenario "Search by multiple filters", :js do
           ana  = create :user, official_level: 1
           john = create :user, official_level: 1
 
@@ -851,7 +853,8 @@ feature 'Debates' do
           end
         end
 
-        scenario "Maintain advanced search criteria", :js do
+        # CDJ Aude Custom : fixed in custom spec
+        xscenario "Maintain advanced search criteria", :js do
           visit debates_path
           click_link "Advanced search"
 
