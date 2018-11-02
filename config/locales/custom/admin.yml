@@ -6,16 +6,40 @@ fr:
         sections:
           debates: Idées
           proposals: Projets
+    homepage:
+      feeds:
+        proposals: Projets
+        debates: Idées
     menu:
       articles: "Rédaction des actualités"
       animators: "Comité d'animation"
       title_categories: "Catégories"
       title_profiles: "Utilisateurs"
       title_banners: "Bannières"
+      proposals_topics: Sujets des projets
       proposals_topics: Tags des projets
+      hidden_debates: Idées masquées
+      hidden_proposals: Projets masqués
+      hidden_proposal_notifications: Masquer les notifications de projets
+    proposals:
+      index:
+        title: Projets masqués
+        no_hidden_proposals: Il n’y a aucun projet masqué.
     segment_recipient:
       proposal_authors: Auteurs de projets
       animators: Membres du CA
+    stats:
+      show: 
+        proposal_notifications: Notifications des projets
+        summary:
+          debate_votes: Votes des idées
+          debates: Idées
+          proposal_votes: Votes des projets
+          proposals: Projets
+          verified_users_who_didnt_vote_proposals: Utilisateurs vérifiés n'ayant pas voté des projets
+      proposal_notifications:
+        title: Notifications des projets
+        proposals_with_notifications: Projets avec notifications
     tags:
       create: Créer un tag
       destroy: Supprimer le tag
