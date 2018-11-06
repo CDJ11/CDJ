@@ -38,7 +38,7 @@ Voir la [page dédiée sur le site du département](https://www.aude.fr/670-cons
 * la branche `master` est la référence qui doit rester déployable en production à chaque instant
 * les Pull Requests sont automatiquement fusionnées en faisant un **Squash and Merge** afin de garder un historique plus lisibles des évolutions qui ont eut lieux sur ce fork
   * [exemple de commit issu d'un "squash and merge"](https://github.com/CDJ11/CDJ/commit/1445a0e069b81983d85008e6941925d33bfeedf4)
-* le fork est mis à jour en suivant [le processus décrit dans la doc officielle](https://consul_docs.gitbooks.io/docs/content/en/forks/update.html)
+* le fork est mis à jour en suivant [le processus décrit dans la doc officielle](https://consul_docs.gitbooks.io/docs/content/en/forks/update.html). Une documentation complémentaire spécifique aux particularités du présent projet est disponible dans le [dossier doc](https://github.com/CDJ11/CDJ/blob/master/doc/custom/monter-en-version.md).
 
 ### Traductions
 
