@@ -52,9 +52,6 @@ fr:
         more_info: Plus d'information et de contexte
       proposals:
         empty_proposals: Il n’y a pas de propositions
-        filters:
-          random: Random
-          winners: Selected
       debate:
         empty_questions: Il n'y a pas de question
         participate: Participer au débat

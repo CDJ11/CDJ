@@ -507,6 +507,11 @@ feature 'Commenting legislation questions' do
 
       within("#comment_#{@comment.id}_votes") do
         find('.in_favor a').click
+
+        within('.in_favor') do
+          expect(page).to have_content "1"
+        end
+
         find('.against a').click
 
         within('.in_favor') do
@@ -521,7 +526,7 @@ feature 'Commenting legislation questions' do
       end
     end
 
-    xscenario 'Trying to vote multiple times', :js do
+    scenario 'Trying to vote multiple times', :js do
       visit legislation_process_question_path(@legislation_question.process, @legislation_question)
 
       within("#comment_#{@comment.id}_votes") do

@@ -238,7 +238,6 @@ feature 'Admin budgets' do
       selected = create(:budget_investment, :selected, heading: heading, price: 2, ballot_lines_count: 1)
 
       visit edit_admin_budget_path(budget)
-
       expect(page).not_to have_content 'See results'
       click_link 'Calculate Winner Investments'
 

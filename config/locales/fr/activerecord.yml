@@ -13,6 +13,9 @@ fr:
       budget/investment/milestone:
         one: "jalon"
         other: "jalons"
+      budget/investment/status:
+        one: "Statut d’investissement"
+        other: "Statuts d’investissement"
       comment:
         one: "Commentaire"
         other: "Commentaires"
@@ -100,6 +103,9 @@ fr:
       poll:
         one: "Sondage"
         other: "Sondages"
+      proposal_notification:
+        one: "Notification de proposition"
+        other: "Notifications des propositions"
     attributes:
       budget:
         name: "Nom"
@@ -123,9 +129,13 @@ fr:
         image: "Image descriptive de la proposition"
         image_title: "Titre de l'image"
       budget/investment/milestone:
+        status_id: "Statut actuel de l'investissement (facultatif)"
         title: "Titre"
-        description: "Description"
+        description: "Description (facultative si un statut est affecté)"
         publication_date: "Date de publication"
+      budget/investment/status:
+        name: "Nom"
+        description: "Description (facultative)"
       budget/heading:
         name: "Nom de la rubrique"
         price: "Coût"
@@ -273,6 +283,10 @@ fr:
           attributes:
             segment_recipient:
               invalid: "Le segment des utilisateurs destinataires est invalide"
+        admin_notification:
+          attributes:
+            segment_recipient:
+              invalid: "Le segment des utilisateurs destinataires n’est pas valide"
         map_location:
           attributes:
             map:

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Residence' do
+feature 'Residence', :with_frozen_time do
   let(:officer) { create(:poll_officer) }
 
   background do

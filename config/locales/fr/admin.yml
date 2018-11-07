@@ -64,7 +64,7 @@ fr:
         filters:
           all: Tous
           on_comments: Commentaires
-          on_debates: Débats
+          on_debates: Discussions
           on_proposals: Propositions
           on_users: Utilisateurs
           on_system_emails: System emails
@@ -79,7 +79,7 @@ fr:
         filters:
           open: Ouvert
           finished: Terminé
-        budget_investments: Voir les propositions d'investissement
+        budget_investments: Gestion de projets
         table_name: Nom
         table_phase: Phases
         table_investments: Propositions d'investissement
@@ -269,8 +269,6 @@ fr:
         show_image: "Afficher l'image"
         documents: "Documents"
       form:
-        add_language: Ajouter une langue
-        remove_language: Supprimer une langue
         admin_statuses: Administrer les statuts d'investissement
         no_statuses_defined: Il n'y a pas encore de statuts d'investissement définis
       new:
@@ -352,8 +350,8 @@ fr:
           all: Tous
           with_confirmed_hide: Confirmé
           without_confirmed_hide: En attente
-        title: Hidden budgets investments
-        no_hidden_budget_investments: There are no hidden budget investments
+        title: Investissements de budgets cachés
+        no_hidden_budget_investments: Il n’y a aucun investissement budgétaire caché
     legislation:
       processes:
         create:
@@ -374,7 +372,6 @@ fr:
           enabled: Activé
           process: Processus
           debate_phase: Phase de débat
-          allegations_phase: Phase de brouillon
           proposals_phase: Phase de propositions
           start: Début
           end: Fin
@@ -411,12 +408,11 @@ fr:
           proposals: Propositions
       proposals:
         index:
-          title: Propositions
           back: Retour
         form:
           custom_categories: Catégories
           custom_categories_description: Catégories que les utilisateurs peuvent sélectionner créer une proposition.
-          custom_categories_placeholder: Enter the tags you would like to use, separated by commas (,) and between quotes ("")
+          custom_categories_placeholder: Entrez les balises que vous souhaitez utiliser, séparés par des virgules (,) et entre guillemets ( "")
       draft_versions:
         create:
           notice: 'Le brouillon a été créé avec succès. <a href="%{link}"> cliquez ici pour le visualiser</a>'
@@ -524,7 +520,7 @@ fr:
       hidden_comments: Commentaires masqués
       hidden_debates: Débats masqués
       hidden_proposals: Propositions masquées
-      hidden_budget_investments: Hidden budget investments
+      hidden_budget_investments: Investissements de budget cachés
       hidden_proposal_notifications: Masquer les notifications de propositions
       hidden_users: Utilisateurs masqués
       administrators: Administrateurs
@@ -533,7 +529,6 @@ fr:
       messaging_users: Messages aux utilisateurs
       newsletters: Bulletins d’information
       admin_notifications: Notifications
-      system_emails: System Emails
       emails_download: Téléchargement des courriels
       valuators: Évaluateurs
       poll_officers: Assesseurs
@@ -552,19 +547,20 @@ fr:
         pages: Pages personnalisées
         images: Images personnalisées
         content_blocks: Blocs de contenu personnalisés
-        information_texts: Custom information texts
+        information_texts: "Textes d'information personnalisés"
         information_texts_menu:
-          debates: "Debates"
-          community: "Community"
-          proposals: "Proposals"
-          polls: "Polls"
-          layouts: "Layouts"
+          debates: "Débats"
+          community: "Communauté"
+          proposals: "Propositions"
+          polls: "Votes"
+          layouts: "Dessins"
           mailers: "Courriels"
           management: "Gestion"
           guides: "Guides"
           welcome: "Bienvenue"
         buttons:
           save: "Sauvegarder"
+      title_categories: Catégories
       title_moderated_content: Contenu modéré
       title_budgets: Budgets
       title_polls: Votes
@@ -677,16 +673,14 @@ fr:
         send_alert: Êtes-vous sûr de vouloir envoyer cette notification à %{n} utilisateurs ?
     system_emails:
       preview_pending:
-        action: Preview Pending
+        action: Aperçu en attente
         preview_of: Aperçu de %{name}
         pending_to_be_sent: Ceci est le contenu en attente d’être envoyé
-        moderate_pending: Moderate notification send
-        send_pending: Send pending
+        send_pending: Envoi en attente
         send_pending_notification: Les notifications en attente ont été envoyées avec succès
       proposal_notification_digest:
-        title: Proposal Notification Digest
-        description: Gathers all proposal notifications for an user in a single message, to avoid too much emails.
-        preview_detail: Users will only recieve notifications from the proposals they are following
+        description: Rassemble toutes les notifications de proposition pour un utilisateur dans un seul message, afin d’éviter trop d’e-mails.
+        preview_detail: Les utilisateurs recevront uniquement les notifications des propositions qu’ils suivent
     emails_download:
       index:
         title: Téléchargement des courriels
@@ -1344,11 +1338,10 @@ fr:
         page:
           created_at: Créé le
           status: Statut
-          title: Titre
           updated_at: Mis-à-jour le
           status_draft: Brouillon
           status_published: Publié
-          locale: Langue
+          title: Titre
     homepage:
       title: Page d’accueil
       description: Les modules actifs apparaissent dans la page d’accueil dans le même ordre, comme en l’espèce.
