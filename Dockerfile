@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-FROM ruby:2.3.6
-
-# Install essential Linux packages
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev postgresql-client nodejs imagemagick sudo
-=======
 # Use Ruby 2.3.6 as base image
 FROM ruby:2.3.6
 
@@ -12,7 +6,6 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install essential Linux packages
 RUN apt-get update -qq
 RUN apt-get install -y build-essential libpq-dev postgresql-client nodejs imagemagick sudo libxss1 libappindicator1 libindicator7 unzip memcached
->>>>>>> v0.17
 
 # Files created inside the container repect the ownership
 RUN adduser --shell /bin/bash --disabled-password --gecos "" consul \

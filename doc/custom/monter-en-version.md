@@ -5,12 +5,13 @@
 Exemple pour la montée à 0.16 : 
 
 ```
-git checkout -b upstream
-g fetch --prune
-g fetch upstream
 git checkout -b consul016
+g fetch --prune # si besoin
+g fetch upstream
 g merge v0.16
 ```
+
+... Et commencer par résoudre tous les conflits :)
 
 ## Comparer les changements depuis la précédente version.
 

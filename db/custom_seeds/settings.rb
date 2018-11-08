@@ -89,7 +89,7 @@ section "Creating custom Settings" do
   Setting['feature.community'] = true
   Setting['feature.map'] = true
   Setting['feature.allow_images'] = true
-  Setting['feature.guides'] = nil
+  Setting['feature.help_page'] = true
 
   # Banner styles
   Setting['banner-style.banner-style-one']   = "Banner style 1"

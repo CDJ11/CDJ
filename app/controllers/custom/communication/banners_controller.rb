@@ -37,9 +37,9 @@ class Communication::BannersController < Communication::BaseController
   private
 
     def banner_params
-      attributes = [:title, :description, :target_url,
-                    :post_started_at, :post_ended_at,
+      attributes = [:target_url, :post_started_at, :post_ended_at,
                     :background_color, :font_color,
+                    translation_params(Banner),
                     web_section_ids: []]
       params.require(:banner).permit(*attributes)
     end
@@ -58,6 +58,11 @@ class Communication::BannersController < Communication::BaseController
 
     def banner_sections
       @banner_sections = WebSection.all
+    end
+
+    def resource
+      @banner = Banner.find(params[:id]) unless @banner
+      @banner
     end
 
 end

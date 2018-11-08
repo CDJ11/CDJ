@@ -87,6 +87,7 @@ fr:
         table_edit_budget: Modifier
         edit_groups: Modifier les groupes de rubriques
         edit_budget: Modifier le budget
+        no_budgets: "There are no open budgets."
       create:
         notice: Nouveau budget participatif créé avec succès !
       update:
@@ -372,6 +373,7 @@ fr:
           enabled: Activé
           process: Processus
           debate_phase: Phase de débat
+          allegations_phase: Comments phase
           proposals_phase: Phase de propositions
           start: Début
           end: Fin
@@ -393,6 +395,12 @@ fr:
           back: Retour
           title: Créer un nouveau processus législatif collaboratif
           submit_button: Créer un processus
+        proposals:
+          select_order: Sort by
+          orders:
+            id: Id
+            title: Title
+            supports: Supports
         process:
           title: Processus
           comments: Commentaires
@@ -408,7 +416,12 @@ fr:
           proposals: Propositions
       proposals:
         index:
+          title: Title
           back: Retour
+          id: Id
+          supports: Supports
+          select: Select
+          selected: Selected
         form:
           custom_categories: Catégories
           custom_categories_description: Catégories que les utilisateurs peuvent sélectionner créer une proposition.
@@ -529,6 +542,7 @@ fr:
       messaging_users: Messages aux utilisateurs
       newsletters: Bulletins d’information
       admin_notifications: Notifications
+      system_emails: System Emails
       emails_download: Téléchargement des courriels
       valuators: Évaluateurs
       poll_officers: Assesseurs
@@ -547,20 +561,18 @@ fr:
         pages: Pages personnalisées
         images: Images personnalisées
         content_blocks: Blocs de contenu personnalisés
-        information_texts: "Textes d'information personnalisés"
+        information_texts: Textes d’information personnalisés
         information_texts_menu:
           debates: "Débats"
           community: "Communauté"
           proposals: "Propositions"
-          polls: "Votes"
-          layouts: "Dessins"
+          polls: "Sondages"
+          layouts: "Mise en page"
           mailers: "Courriels"
           management: "Gestion"
-          guides: "Guides"
           welcome: "Bienvenue"
         buttons:
           save: "Sauvegarder"
-      title_categories: Catégories
       title_moderated_content: Contenu modéré
       title_budgets: Budgets
       title_polls: Votes
@@ -629,6 +641,9 @@ fr:
         title: Aperçu du bulletin d'information
         send: Envoyer
         affected_users: (%{n} utilisateurs concernés)
+        sent_emails:
+          one: 1 email sent
+          other: "%{count} emails sent"
         sent_at: Envoyé à
         subject: Objet
         segment_recipient: Destinataires
@@ -656,8 +671,10 @@ fr:
         empty_notifications: Aucune notification à afficher
       new:
         section_title: Nouvelle notification
+        submit_button: Créer la notification
       edit:
         section_title: Editer la notification
+        submit_button: Editer la notification
       show:
         section_title: Aperçu de la notification
         send: Envoyer la notification
@@ -676,9 +693,11 @@ fr:
         action: Aperçu en attente
         preview_of: Aperçu de %{name}
         pending_to_be_sent: Ceci est le contenu en attente d’être envoyé
+        moderate_pending: Moderate notification send
         send_pending: Envoi en attente
         send_pending_notification: Les notifications en attente ont été envoyées avec succès
       proposal_notification_digest:
+        title: Proposal Notification Digest
         description: Rassemble toutes les notifications de proposition pour un utilisateur dans un seul message, afin d’éviter trop d’e-mails.
         preview_detail: Les utilisateurs recevront uniquement les notifications des propositions qu’ils suivent
     emails_download:
@@ -1300,6 +1319,11 @@ fr:
         content_block:
           body: Contenu
           name: Nom
+          names:
+            top_links: Liens du haut
+            footer: Pied de page
+            subnavigation_left: Navigation principale gauche
+            subnavigation_right: Navigation principale droite
       images:
         index:
           title: Images personnalisées
@@ -1342,6 +1366,7 @@ fr:
           status_draft: Brouillon
           status_published: Publié
           title: Titre
+          slug: Slug
     homepage:
       title: Page d’accueil
       description: Les modules actifs apparaissent dans la page d’accueil dans le même ordre, comme en l’espèce.
@@ -1370,3 +1395,6 @@ fr:
         submit_header: Sauvegarder l'entête
         card_title: Modifier l'encart
         submit_card: Sauvegarder l'encart
+    translations:
+      remove_language: Retirer la langue
+      add_language: Ajouter une langue

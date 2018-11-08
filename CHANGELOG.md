@@ -3,8 +3,6 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html)
 
-<<<<<<< HEAD
-=======
 ## [0.17.0](https://github.com/consul/consul/compare/v0.16...v0.17) - 2018-10-31
 
 ### Added
@@ -85,7 +83,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - **Design/UX:** Fix navigation menu under Legislation::Proposal show view [\#2835](https://github.com/consul/consul/pull/2835)
 - **Social-Share:** Fix bug in facebook share link [\#2852](https://github.com/consul/consul/pull/2852)
 
->>>>>>> v0.17
 ## [0.16.0](https://github.com/consul/consul/compare/v0.15...v0.16) - 2018-07-16
 
 ### Added
@@ -499,12 +496,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Rails 4.2.6
 - Ruby 2.2.3
 
-<<<<<<< HEAD
-[Unreleased]: https://github.com/consul/consul/compare/v0.16...consul:master
-=======
 [Unreleased]: https://github.com/consul/consul/compare/v0.17...consul:master
 [0.17.0]: https://github.com/consul/consul/compare/v0.16...v.017
->>>>>>> v0.17
 [0.16.0]: https://github.com/consul/consul/compare/v0.15...v.016
 [0.15.0]: https://github.com/consul/consul/compare/v0.14...v0.15
 [0.14.0]: https://github.com/consul/consul/compare/v0.13...v0.14
