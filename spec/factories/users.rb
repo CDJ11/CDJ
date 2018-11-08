@@ -1,5 +1,17 @@
+# ============================
+# /!\ Attention, suite à la validation d'un âge maximum, il a fallu modifier de nombreux champs (date)
+# Les champs à la suite desquels est commenté `custom CDJ Aude` sont ceux qui ont été modifiés
+# =============================
+
 FactoryBot.define do
   factory :user do
+    # custom_ CDJ Aude begin -----------------------
+    sequence(:firstname) { |n| "Manuela#{n}" }
+    sequence(:lastname) { |n| "Zuliani#{n}" }
+    postal_code '11000'
+    date_of_birth 20.years.ago
+    # custom CDJ Aude end -------------------------
+
     sequence(:username) { |n| "Manuela#{n}" }
     sequence(:email)    { |n| "manuela#{n}@consul.dev" }
 
@@ -21,7 +33,8 @@ FactoryBot.define do
       sms_confirmation_code "1234"
       document_type "1"
       document_number
-      date_of_birth Date.new(1980, 12, 31)
+      # date_of_birth Date.new(1980, 12, 31)
+      date_of_birth Date.new(20.years.ago.year, 12, 31)  #custom CDJ Aude
       gender "female"
       geozone
     end
@@ -75,6 +88,11 @@ FactoryBot.define do
   end
 
   factory :poll_officer, class: 'Poll::Officer' do
+    user
+  end
+
+  # custom_factory CDJ Aude
+  factory :animator do
     user
   end
 

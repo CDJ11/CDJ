@@ -234,21 +234,6 @@ feature "Notifications" do
       expect(Delayed::Job.third.run_at.change(usec: 0)).to eq(third_batch_run_at)
     end
 
-    expect(page).to have_css(".notification", count: 1)
-    expect(page).to have_content(notification2.notifiable_title)
-    expect(page).to_not have_content(notification1.notifiable_title)
-  end
-
-  scenario "Mark all as read" do
-    notification1 = create(:notification, user: user)
-    notification2 = create(:notification, user: user)
-
-    click_notifications_icon
-
-    expect(page).to have_css(".notification", count: 2)
-    click_link "Mark all as read"
-
-    expect(page).to have_css(".notification", count: 0)
   end
 
   def remove_users_without_pending_notifications

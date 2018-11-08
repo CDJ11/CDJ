@@ -27,7 +27,8 @@ RSpec.describe Poll::Question, type: :model do
       expect(poll_question.title).to eq(proposal.title)
     end
 
-    context "locale with non-underscored name" do
+    # CDJ custom : pas de pt-BR dans l'app
+    xcontext "locale with non-underscored name" do
       before do
         I18n.locale = :"pt-BR"
         Globalize.locale = I18n.locale

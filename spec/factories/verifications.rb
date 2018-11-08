@@ -1,8 +1,14 @@
+# ============================
+# /!\ Attention, suite à la validation d'un âge maximum, il a fallu modifier de nombreux champs (date)
+# Les champs à la suite desquels est commenté `custom CDJ Aude` sont ceux qui ont été modifiés
+# =============================
+
 FactoryBot.define do
   factory :local_census_record, class: 'LocalCensusRecord' do
     document_number '12345678A'
     document_type 1
-    date_of_birth Date.new(1970, 1, 31)
+    date_of_birth Date.new(20.years.ago.year, 1, 31) #custom CDJ Aude
+    # date_of_birth Date.new(1970, 1, 31)
     postal_code '28002'
   end
 
@@ -12,7 +18,8 @@ FactoryBot.define do
     user
     document_number
     document_type    "1"
-    date_of_birth    { Time.zone.local(1980, 12, 31).to_date }
+    # date_of_birth    { Time.zone.local(1980, 12, 31).to_date }
+    date_of_birth    Time.zone.local(20.years.ago.year, 12, 31).to_date # custom CDJ Aude
     postal_code      "28013"
     terms_of_service '1'
 

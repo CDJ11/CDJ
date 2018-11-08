@@ -8,7 +8,6 @@ Dir["./spec/models/concerns/*.rb"].each { |f| require f }
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
 Dir["./spec/shared/**/*.rb"].sort.each { |f| require f }
 Dir["./spec/custom/support/**/*.rb"].sort.each { |f| require f }
-Dir["./spec/custom/factories.rb"].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
@@ -45,7 +44,7 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
     I18n.locale = :en
     Globalize.locale = I18n.locale
-    load Rails.root.join('db', 'seeds.rb').to_s
+    # load Rails.root.join('db', 'seeds.rb').to_s # Custom CDJ Aude
     load Rails.root.join('db', 'custom_seeds.rb').to_s # Custom CDJ Aude
     Setting["feature.user.skip_verification"] = nil
     Setting["feature.cdj_aude"] = nil # Custom CDJ Aude

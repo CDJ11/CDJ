@@ -1,3 +1,8 @@
+# ============================
+# /!\ Attention, suite à la validation d'un âge maximum, il a fallu modifier de nombreux champs (date)
+# Les champs à la suite desquels est commenté `custom CDJ Aude` sont ceux qui ont été modifiés
+# =============================
+
 FactoryBot.define do
   factory :poll do
     sequence(:name) { |n| "Poll #{SecureRandom.hex}" }
@@ -133,7 +138,8 @@ FactoryBot.define do
     association :officer, factory: :poll_officer
     document_number
     document_type    "1"
-    year_of_birth    "1980"
+    # year_of_birth    "1980"
+    year_of_birth    20.years.ago.year # custom CDJ Aude
 
     trait :invalid do
       year_of_birth { Time.current.year }

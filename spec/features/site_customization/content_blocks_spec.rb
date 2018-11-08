@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "Custom content blocks" do
-  xscenario "top links" do
+  scenario "top links" do
     create(:site_customization_content_block, name: "top_links", locale: "en",
                                               body: "content for top links")
     create(:site_customization_content_block, name: "top_links", locale: "es",
@@ -18,7 +18,7 @@ feature "Custom content blocks" do
     expect(page).not_to have_content("content for top links")
   end
 
-  xscenario "footer" do
+  scenario "footer" do
     create(:site_customization_content_block, name: "footer", locale: "en",
                                               body: "content for footer")
     create(:site_customization_content_block, name: "footer", locale: "es",
