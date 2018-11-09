@@ -41,16 +41,14 @@ RSpec.configure do |config|
   end
 
   config.before do |example|
-    p "Config.before START ===================="
     DatabaseCleaner.strategy = :transaction
     I18n.locale = :en
     Globalize.locale = I18n.locale
-    p "load seeds"
     # load Rails.root.join('db', 'seeds.rb').to_s # Custom CDJ Aude
     load Rails.root.join('db', 'custom_seeds.rb').to_s # Custom CDJ Aude
+    load Rails.root.join('db', 'custom_seeds', 'settings.rb').to_s # Custom CDJ Aude
     Setting["feature.user.skip_verification"] = nil
     Setting["feature.cdj_aude"] = nil # Custom CDJ Aude
-    p "Config.before END ======================"
   end
 
   config.before(:each, type: :feature) do
