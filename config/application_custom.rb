@@ -4,7 +4,7 @@ module Consul
     config.time_zone = 'Europe/Paris'
     # English needed for Faver dev_seeds
     if Rails.env.test? || Rails.env.development?
-      config.i18n.available_locales = [:fr, :en]
+      config.i18n.available_locales = [:fr, :en, :es]
     else
       config.i18n.available_locales = [:fr]
     end
