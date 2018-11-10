@@ -12,6 +12,7 @@ module CommonActions
   include Users
   include Verifications
   include Votes
+  include Custom
 
   def fill_in_signup_form(email = 'manuela@consul.dev', password = 'judgementday')
     fill_in 'user_username',              with: "Manuela Carmena #{rand(99999)}"

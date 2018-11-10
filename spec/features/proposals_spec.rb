@@ -14,6 +14,21 @@ feature 'Proposals' do
     it_behaves_like 'relationable', Proposal
   end
 
+  before do
+    Setting['feature.allow_images'] = true
+    Setting['feature.allow_attached_documents'] = true
+    Setting['feature.budgets'] = true
+    Setting['votes_for_proposal_success'] = 53726
+    Setting['feature.map'] = nil
+  end
+  
+  after do
+    Setting['feature.allow_images'] = nil
+    Setting['feature.allow_attached_documents'] = nil
+    Setting['feature.budgets'] = nil
+    Setting['feature.map'] = nil
+  end
+
   context 'Index' do
 
     before do
@@ -258,7 +273,6 @@ feature 'Proposals' do
     check 'proposal_terms_of_service'
 
     click_button 'Create proposal'
-
     expect(page).to have_content 'Proposal created successfully.'
     expect(page).to have_content 'Improve your campaign and get more supports'
 
@@ -1814,10 +1828,12 @@ feature 'Successful proposals' do
 
     before do
       Setting["feature.user.skip_verification"] = 'true'
+      Setting['feature.map'] = nil
     end
 
     after do
       Setting["feature.user.skip_verification"] = nil
+      Setting['feature.map'] = nil
     end
 
     scenario "Create" do

@@ -77,28 +77,6 @@
   </div>
 
   <div class="row">
-    <div class="small-12 column">
-      <%= f.label :sections, t("admin.banners.banner.sections_label") %>
-      <%= f.collection_check_boxes(:web_section_ids, @banner_sections, :id, :name) do |b| %>
-        <%= b.check_box %> <%= t("admin.banners.banner.sections.#{b.text}") %><br>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="small-3 column">
-      <%= f.label :sections, t("admin.banners.banner.background_color") %>
-      <%= color_field(:banner, :background_color, id: 'banner_background_color_picker') %>
-      <%= f.text_field :background_color, label: false %>
-    </div>
-    <div class="small-3 column end">
-      <%= f.label :sections, t("admin.banners.banner.font_color") %>
-      <%= color_field(:banner, :font_color, id: 'banner_font_color_picker') %>
-      <%= f.text_field :font_color, label: false %>
-    </div>
-  </div>
-
-  <div class="row">
     <div class="actions small-12 medium-3 column">
       <%= f.submit(class: "button expanded", value: t("admin.banners.edit.form.submit_button")) %>
     </div>

@@ -7,6 +7,14 @@ feature 'Admin legislation draft versions' do
     login_as(admin.user)
   end
 
+  before do
+    Setting['feature.legislation'] = true
+  end
+
+  after do
+    Setting['feature.legislation'] = nil
+  end
+
   it_behaves_like "translatable",
                   "legislation_draft_version",
                   "edit_admin_legislation_process_draft_version_path",

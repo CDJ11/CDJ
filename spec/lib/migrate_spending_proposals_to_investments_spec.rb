@@ -3,7 +3,7 @@ require 'rails_helper'
 describe MigrateSpendingProposalsToInvestments do
 
   let(:importer) { described_class.new }
-
+  # CDJ custom : broken, no time to investigate TODO
   describe '#import' do
 
     it "Creates the budget if it doesn't exist" do

@@ -66,7 +66,7 @@ describe EmailDigest do
   end
 
   describe "deliver" do
-
+    # CDJ Custom
     it "delivers email if notifications pending" do
       user = create(:user)
 
@@ -78,7 +78,7 @@ describe EmailDigest do
       email_digest.deliver(Time.current)
 
       email = open_last_email
-      expect(email).to have_subject("Proposal notifications in CONSUL")
+      expect(email).to have_subject("Proposal notifications in #{Setting["org_name"]}")
     end
 
     it "does not deliver email if no notifications pending" do

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Localization' do
 
-  # CDJ custom : pas de multilingue
+  # CDJ custom : espagnol pas langue principale
   xscenario 'Wrong locale' do
     card = create(:widget_card, title: 'Bienvenido a CONSUL',
                                 description: 'Software libre para la participación ciudadana.',
@@ -16,7 +16,7 @@ feature 'Localization' do
     expect(page).to have_text('Bienvenido a CONSUL')
   end
 
-  xscenario 'Available locales appear in the locale switcher' do
+  scenario 'Available locales appear in the locale switcher' do
     visit '/'
 
     within('.locale-form .js-location-changer') do
@@ -25,12 +25,12 @@ feature 'Localization' do
     end
   end
 
-  xscenario 'The current locale is selected' do
+  scenario 'The current locale is selected' do
     visit '/'
     expect(page).to have_select('locale-switcher', selected: 'English')
   end
 
-  xscenario 'Changing the locale', :js do
+  scenario 'Changing the locale', :js do
     visit '/'
     expect(page).to have_content('Language')
 

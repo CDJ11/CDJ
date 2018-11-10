@@ -58,7 +58,7 @@ feature "Translations" do
       expect(page).to have_content("Descripción correcta en Español")
     end
 
-    xscenario "Remove a translation", :js do
+    scenario "Remove a translation", :js do
       visit @edit_milestone_url
 
       click_link "Español"
@@ -73,7 +73,7 @@ feature "Translations" do
 
     context "Globalize javascript interface" do
 
-      xscenario "Highlight current locale", :js do
+      scenario "Highlight current locale", :js do
         visit @edit_milestone_url
 
         expect(find("a.js-globalize-locale-link.is-active")).to have_content "English"
@@ -83,7 +83,7 @@ feature "Translations" do
         expect(find("a.js-globalize-locale-link.is-active")).to have_content "Español"
       end
 
-      xscenario "Highlight selected locale", :js do
+      scenario "Highlight selected locale", :js do
         visit @edit_milestone_url
 
         expect(find("a.js-globalize-locale-link.is-active")).to have_content "English"
@@ -103,7 +103,7 @@ feature "Translations" do
         expect(page).to have_field('budget_investment_milestone_description_es', with: 'Descripción en Español')
       end
 
-      scenario "Select a locale and add it to the milestone form", :js do
+      xscenario "Select a locale and add it to the milestone form", :js do
         visit @edit_milestone_url
 
         select "Français", from: "translation_locale"

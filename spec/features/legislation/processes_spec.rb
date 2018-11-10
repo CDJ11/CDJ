@@ -4,6 +4,14 @@ feature 'Legislation' do
 
   let!(:administrator) { create(:administrator).user }
 
+  before do
+    Setting['feature.legislation'] = true
+  end
+
+  after do
+    Setting['feature.legislation'] = nil
+  end
+
   shared_examples "not published permissions" do |path|
 
     let(:not_published_process) { create(:legislation_process, :not_published, title: "Process not published") }
