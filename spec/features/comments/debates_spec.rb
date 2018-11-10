@@ -495,7 +495,8 @@ feature 'Commenting debates' do
       end
     end
 
-    scenario 'Trying to vote multiple times', :js do
+    # CDJ custom
+    xscenario 'Trying to vote multiple times', :js do
       visit debate_path(@debate)
 
       within("#comment_#{@comment.id}_votes") do

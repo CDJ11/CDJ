@@ -1394,7 +1394,7 @@ feature 'Proposals' do
 
     scenario "Reorder by recommendations results maintaing search" do
       Setting['feature.user.recommendations'] = true
-      Setting['feature.user.recommendations_for_proposals'] = true
+      Setting['feature.user.recommendations_on_proposals'] = true
 
       user = create(:user, recommended_proposals: true)
       login_as(user)
@@ -1420,7 +1420,7 @@ feature 'Proposals' do
       end
 
       Setting['feature.user.recommendations'] = nil
-      Setting['feature.user.recommendations_for_proposals'] = nil
+      Setting['feature.user.recommendations_on_proposals'] = nil
     end
 
     scenario 'After a search do not show featured proposals' do

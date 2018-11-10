@@ -21,6 +21,14 @@ feature 'Admin legislation processes' do
 
   end
 
+  before do
+    Setting['feature.legislation'] = true
+  end
+
+  after do
+    Setting['feature.legislation'] = nil
+  end
+
   context "Index" do
 
     scenario 'Displaying legislation processes' do

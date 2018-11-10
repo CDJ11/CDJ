@@ -2,6 +2,15 @@ require 'rails_helper'
 
 feature 'Budget Investments' do
 
+  before do
+    Setting['feature.budgets'] = true
+    Setting['feature.map'] = nil
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+  end
+
   background do
     login_as_manager
     @budget = create(:budget, phase: 'selecting', name: "2033")

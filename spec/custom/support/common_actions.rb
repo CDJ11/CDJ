@@ -15,9 +15,11 @@ module CommonActions
   include Custom
 
   def fill_in_signup_form(email = 'manuela@consul.dev', password = 'judgementday')
+    save_and_open_page
     fill_in 'user_username',              with: "Manuela Carmena #{rand(99999)}"
     fill_in 'user_email',                 with: email
-    select_date "31-December-#{valid_date_of_birth_year}", from: 'user_date_of_birth'
+    # select_date "31-December-#{valid_date_of_birth_year}", from: 'user_date_of_birth'
+    select_date "31-diciembre-#{valid_date_of_birth_year}", from: 'user_date_of_birth'
     fill_in 'user_lastname', with: 'Carmena'
     fill_in 'user_firstname', with: 'Manuela'
     fill_in 'user_postal_code', with: '11000'

@@ -7,6 +7,14 @@ feature 'Admin budgets' do
     login_as(admin.user)
   end
 
+  before do
+    Setting['feature.budgets'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+  end
+
   context 'Feature flag' do
 
     background do

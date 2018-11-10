@@ -6,6 +6,14 @@ feature 'Budgets' do
   let(:level_two_user)     { create(:user, :level_two) }
   let(:allowed_phase_list) { ['balloting', 'reviewing_ballots', 'finished'] }
 
+  before do
+    Setting['feature.budgets'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+  end
+
   context 'Index' do
 
     scenario 'Show normal index with links' do

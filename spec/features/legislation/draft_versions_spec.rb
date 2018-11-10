@@ -7,6 +7,14 @@ feature 'Legislation Draft Versions' do
     user
   end
 
+  before do
+    Setting['feature.legislation'] = true
+  end
+
+  after do
+    Setting['feature.legislation'] = nil
+  end
+
   context "See draft text page" do
     before do
       @process = create(:legislation_process)

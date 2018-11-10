@@ -7,6 +7,16 @@ feature 'Admin legislation processes' do
     login_as(admin.user)
   end
 
+  before do
+    Setting['feature.proposals'] = true
+    Setting['feature.legislation'] = true
+  end
+
+  after do
+    Setting['feature.proposals'] = nil
+    Setting['feature.legislation'] = nil
+  end
+
   context "Index" do
 
     scenario 'Displaying legislation proposals' do

@@ -12,10 +12,12 @@ feature 'Tags' do
 
   before do
     Setting['feature.budgets'] = true
+    Setting['feature.map'] = nil
   end
 
   after do
     Setting['feature.budgets'] = nil
+    Setting['feature.map'] = nil
   end
 
   scenario 'Index' do

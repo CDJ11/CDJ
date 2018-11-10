@@ -7,6 +7,14 @@ feature 'Signature sheets' do
     login_as(admin.user)
   end
 
+  before do
+    Setting['feature.budgets'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+  end
+
   context "Index" do
     scenario 'Lists all signature_sheets' do
       3.times { create(:signature_sheet) }

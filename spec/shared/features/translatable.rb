@@ -195,8 +195,7 @@ shared_examples "translatable" do |factory_name, path_name, input_fields, textar
       expect_page_to_have_translatable_field field, :en, with: ''
     end
 
-    # CDJ custom : no pt-BR locale
-    xscenario "Add a translation for a locale with non-underscored name", :js do
+    scenario "Add a translation for a locale with non-underscored name", :js do
       visit path
 
       select "Português brasileiro", from: "translation_locale"

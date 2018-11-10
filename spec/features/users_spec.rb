@@ -2,6 +2,14 @@ require 'rails_helper'
 
 feature 'Users' do
 
+  before do
+    Setting['feature.budgets'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+  end
+
   feature 'Show (public page)' do
 
     background do

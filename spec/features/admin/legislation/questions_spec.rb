@@ -7,6 +7,14 @@ feature 'Admin legislation questions' do
     login_as(admin.user)
   end
 
+  before do
+    Setting['feature.legislation'] = true
+  end
+
+  after do
+    Setting['feature.legislation'] = nil
+  end
+
   let!(:process) { create(:legislation_process, title: "An example legislation process") }
 
   it_behaves_like "translatable",

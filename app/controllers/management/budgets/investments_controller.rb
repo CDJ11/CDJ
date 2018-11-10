@@ -5,6 +5,7 @@ class Management::Budgets::InvestmentsController < Management::BaseController
 
   before_action :only_verified_users, except: :print
   before_action :load_heading, only: [:index, :show, :print]
+  before_action :load_categories, only: [:index, :new, :create]
 
   def index
     @investments = @investments.apply_filters_and_search(@budget, params).page(params[:page])

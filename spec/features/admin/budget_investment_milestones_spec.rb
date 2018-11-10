@@ -9,6 +9,14 @@ feature 'Admin budget investment milestones' do
     @investment = create(:budget_investment)
   end
 
+  before do
+    Setting['feature.budgets'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+  end
+
   it_behaves_like "translatable",
                   "budget_investment_milestone",
                   "edit_admin_budget_budget_investment_budget_investment_milestone_path",

@@ -11,6 +11,14 @@ feature 'Valuation budget investments' do
     login_as(valuator.user)
   end
 
+  background do
+    Setting['feature.budgets'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+  end
+
   scenario 'Disabled with a feature flag' do
     Setting['feature.budgets'] = nil
     expect{

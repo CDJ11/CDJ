@@ -27,7 +27,7 @@ feature 'Commenting debates' do
         find('.in_favor a').click
         within('.in_favor') do
           expect(page).not_to have_content "2"
-          expect(page).to have_content "1"
+          expect(page).to have_content "0"
         end
 
         within('.against') do

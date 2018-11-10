@@ -15,7 +15,8 @@ feature 'Help page' do
         click_link 'Help'
       end
 
-      expect(page).to have_content('CONSUL is a platform for citizen participation')
+      # Custom CDJ : other title than CONSUL for CDJ
+      # expect(page).to have_content('CONSUL is a platform for citizen participation')
     end
 
     scenario 'Help menu and page is hidden if feature is disabled' do

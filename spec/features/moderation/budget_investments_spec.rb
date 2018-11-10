@@ -2,6 +2,14 @@ require 'rails_helper'
 
 feature 'Moderate budget investments' do
 
+  before do
+    Setting['feature.budgets'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+  end
+
   let(:budget)  { create(:budget) }
   let(:group)   { create(:budget_group, name: 'Culture', budget: budget) }
   let(:heading) { create(:budget_heading, name: 'More libraries', price: 666666, group: group) }

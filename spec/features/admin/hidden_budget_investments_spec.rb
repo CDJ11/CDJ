@@ -11,6 +11,14 @@ feature 'Admin hidden budget investments' do
     login_as(admin.user)
   end
 
+  before do
+    Setting['feature.budgets'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+  end
+
   scenario 'Disabled with a feature flag' do
     Setting['feature.budgets'] = nil
 

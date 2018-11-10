@@ -3,6 +3,16 @@ require 'rails_helper'
 
 feature 'Debates' do
 
+  before do
+    Setting['feature.budgets'] = true
+    Setting['feature.debates'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+    Setting['feature.debates'] = nil
+  end
+
   scenario 'Disabled with a feature flag' do
     Setting['feature.debates'] = nil
     expect{ visit debates_path }.to raise_exception(FeatureFlags::FeatureDisabled)
@@ -930,7 +940,7 @@ feature 'Debates' do
 
     scenario "Reorder by recommendations results maintaing search" do
       Setting['feature.user.recommendations'] = true
-      Setting['feature.user.recommendations_for_debates'] = true
+      Setting['feature.user.recommendations_on_debates'] = true
 
       user = create(:user, recommended_debates: true)
       login_as(user)
@@ -956,7 +966,7 @@ feature 'Debates' do
       end
 
       Setting['feature.user.recommendations'] = nil
-      Setting['feature.user.recommendations_for_debates'] = nil
+      Setting['feature.user.recommendations_on_debates'] = nil
     end
 
     scenario 'After a search do not show featured debates' do
