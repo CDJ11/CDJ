@@ -67,7 +67,7 @@ fr:
           on_debates: Discussions
           on_proposals: Propositions
           on_users: Utilisateurs
-          on_system_emails: System emails
+          on_system_emails: Emails système
         title: Activité de modération
         type: Type
         no_activity: Il n’y a aucune activité de modérateurs.
@@ -373,6 +373,8 @@ fr:
           enabled: Activé
           process: Processus
           debate_phase: Phase de débat
+          draft_phase: Draft phase
+          draft_phase_description: If this phase is active, the process won't be listed on processes index. Allow to preview the process and create content before the start.
           allegations_phase: Comments phase
           proposals_phase: Phase de propositions
           start: Début
@@ -385,7 +387,7 @@ fr:
         index:
           create: Nouveau processus
           delete: Supprimer
-          title: Processus législatifs
+          title: Legislation processes
           filters:
             open: Ouvert
             next: Suivant
@@ -396,11 +398,11 @@ fr:
           title: Créer un nouveau processus législatif collaboratif
           submit_button: Créer un processus
         proposals:
-          select_order: Sort by
+          select_order: Trier par
           orders:
             id: Id
-            title: Title
-            supports: Supports
+            title: Titre
+            supports: Soutiens
         process:
           title: Processus
           comments: Commentaires
@@ -416,12 +418,12 @@ fr:
           proposals: Propositions
       proposals:
         index:
-          title: Title
+          title: Titre
           back: Retour
           id: Id
-          supports: Supports
-          select: Select
-          selected: Selected
+          supports: Soutiens
+          select: Sélectionner
+          selected: Sélectionné
         form:
           custom_categories: Catégories
           custom_categories_description: Catégories que les utilisateurs peuvent sélectionner créer une proposition.
@@ -542,7 +544,7 @@ fr:
       messaging_users: Messages aux utilisateurs
       newsletters: Bulletins d’information
       admin_notifications: Notifications
-      system_emails: System Emails
+      system_emails: Emails système
       emails_download: Téléchargement des courriels
       valuators: Évaluateurs
       poll_officers: Assesseurs
@@ -587,6 +589,7 @@ fr:
         title: Administrateurs
         name: Nom
         email: Email
+        id: Administrator ID
         no_administrators: Il n'y a pas d'administrateurs.
       administrator:
         add: Ajouter
@@ -642,7 +645,7 @@ fr:
         send: Envoyer
         affected_users: (%{n} utilisateurs concernés)
         sent_emails:
-          one: 1 email sent
+          one: 1 email envoyé
           other: "%{count} emails sent"
         sent_at: Envoyé à
         subject: Objet
@@ -671,7 +674,7 @@ fr:
         empty_notifications: Aucune notification à afficher
       new:
         section_title: Nouvelle notification
-        submit_button: Créer la notification
+        submit_button: Créez la notification
       edit:
         section_title: Editer la notification
         submit_button: Editer la notification
@@ -693,11 +696,11 @@ fr:
         action: Aperçu en attente
         preview_of: Aperçu de %{name}
         pending_to_be_sent: Ceci est le contenu en attente d’être envoyé
-        moderate_pending: Moderate notification send
+        moderate_pending: Modérer la notification envoyée
         send_pending: Envoi en attente
         send_pending_notification: Les notifications en attente ont été envoyées avec succès
       proposal_notification_digest:
-        title: Proposal Notification Digest
+        title: Résumé des notifications des propositions
         description: Rassemble toutes les notifications de proposition pour un utilisateur dans un seul message, afin d’éviter trop d’e-mails.
         preview_detail: Les utilisateurs recevront uniquement les notifications des propositions qu’ils suivent
     emails_download:

@@ -40,6 +40,11 @@ fr:
       proposal_notifications:
         title: Notifications des projets
         proposals_with_notifications: Projets avec notifications
+    system_emails:
+      proposal_notification_digest:
+        title: Résumé des notifications des projets
+        description: Rassemble toutes les notifications de projet pour un utilisateur dans un seul message, afin d’éviter trop d’e-mails.
+        preview_detail: Les utilisateurs recevront uniquement les notifications des projets qu’ils suivent
     tags:
       create: Créer un tag
       destroy: Supprimer le tag
