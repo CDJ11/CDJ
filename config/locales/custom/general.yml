@@ -20,6 +20,8 @@ fr:
       social_networks: "Réseaux sociaux"
       add_provider: "Lier votre compte à %{kind}"
       remove_provider: "Délier votre compte de %{kind}"
+      show_debates_recommendations: Voir les recommandations d'idées
+      show_proposals_recommendations: Voir les recommandations de projets
   debates:
     create:
       form:
@@ -40,8 +42,13 @@ fr:
         hot_score: La plus active
         most_commented: La plus commentée
       recommendations:
-        without_results: Il n’y a pas d'idée liée à vos centres d’intérêt
-        without_interests: Suivez des projets afin que nous puissions vous suggérer des recommandations
+        without_results: Il n’y a pas d'idées liée à vos centres d’intérêt
+        without_interests: Suivez des idées afin que nous puissions vous suggérer des recommandations
+        disable: "Les recommandations d'idées cesseront d'apparaître si vous les rejetez. Vous pouvez les réactiver sur la page 'Mon compte'"
+        actions:
+          success: "Les recommandations d'idées sont maintenant désactivées pour ce compte"
+          error: "Une erreur est survenue. Veuillez vous rendre sur la page 'Votre compte' pour désactiver manuellement les recommandations d'idées"
+
       search_form:
         placeholder: Rechercher une idée...
       search_results_html:
