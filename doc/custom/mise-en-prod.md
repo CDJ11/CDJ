@@ -1,6 +1,6 @@
 # Mise en production
 
-Rendre valide les profils admin auxquels il manque des infos
+Rendre valides les profils admin auxquels il manque des infos
 
 ```ruby
 u = User.where(email: 'patrice.gallardo@aude.fr').first
