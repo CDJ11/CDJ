@@ -9,6 +9,7 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += Ckeditor.assets
 Rails.application.config.assets.precompile += %w( ckeditor/config.js )
 Rails.application.config.assets.precompile += %w( ie_lt9.js )
 Rails.application.config.assets.precompile += %w( stat_graphs.js )
@@ -22,4 +23,3 @@ assets_path = Rails.application.config.assets.paths
   assets_path.insert(0, Rails.root.join("app", "assets", asset, "custom").to_s)
 end
 
-Rails.application.config.assets.precompile += Ckeditor.assets
