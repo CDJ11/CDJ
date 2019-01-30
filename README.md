@@ -84,21 +84,23 @@ cap production puma:restart # Relance l'instance puma
 cap production deploy:seed  # Génération des seeds sur l'environnement de production
 ```
 
-### Import de la base de donnée originelle du CDJ
+### Import de la base de donnée originelle du CDJ en production
 
 Une première version du CDJ pré-existait, avec des données qu'il a fallu importer. Les migrations n'étant pas à jour sur le projet originel, il est nécessaire de faire l'import en plusieurs temps : 
 - migrer jusqu'à une certaine version des migrations,
 - faire l'import
 - faire la suite des migrations jusqu'aux migrations actuelles
+- lancer des scripts pour compléter les données
 
 Pour des questions de droit casse-bonbons, la procédure d'installation est un peu bancale, et clairement améliorable. Vu que la procédure suivante est supposée n'être faite qu'une fois, à l'installation du projet, je n'ai pas poussé plus loin mes recherches.
 
-**Pré-requis** : avoir en local la BDD à importer (actuellement disponible dans le dossier drive du projet, et gitignoré pour des questions de confidentialité des données). 
+**Pré-requis** : avoir en local la BDD à importer et  le fichier csv de complétion des utilisateurs (actuellement disponibles dans le dossier drive du projet, et gitignoré pour des questions de confidentialité des données). 
 
-1. Copier la BDD de votre serveur local sur le serveur de prod :
+1. Copier l'export de la BDD, et le fichier csv de complétion des utilisateurs, de votre serveur local sur le serveur de prod :
 
 ```bash
 scp  -P 124 chemin-vers-le-fichier.sql USER@ADRESSE-SERVEUR:/home/deploy/www/cdj_aude/current/doc/custom/ 
+scp  -P 124 CDJ_completion_utilisateurs.csv USER@ADRESSE-SERVEUR:/home/deploy/www/cdj_aude/current/doc/custom/ 
 ```
 
 2. Etapes de l'import :
@@ -115,10 +117,14 @@ psql cdj_aude_production < doc/custom/extract_db_insert_180326.sql
 cap production deploy:finish_import_db
 ```
 
-En production penser à bloquer l'accès aux comptes admin et verified.
-
 Certaines releases nécessitent des actions particulières suite à une montée de version.
 Ces actions sont documentées dans [les releases](https://github.com/consul/consul/releases).
+
+### en développement
+
+Un script résume l'ensemble des étapes et peut être lancé pour effectuer toutes les étapes dans la foulée : 
+
+`./lib/custom/import_db.sh`
 
 ## Changements principaux par rapport à Consul 
 
