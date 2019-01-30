@@ -115,6 +115,7 @@ cd /home/deploy/www/cdj_aude/current
 psql cdj_aude_production < doc/custom/extract_db_insert_180326.sql
 # En local
 cap production deploy:finish_import_db
+cap production delayed_job:restart
 ```
 
 Certaines releases nécessitent des actions particulières suite à une montée de version.
