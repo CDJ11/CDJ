@@ -1,0 +1,18 @@
+<% provide :title do %><%= t('pages.titles.conditions') %><% end %>
+<% content_for :canonical do %>
+  <%= render "shared/canonical", href: page_url("conditions") %>
+<% end %>
+
+<div class="row margin-top">
+
+  <div class="small-12 medium-9 column">
+    <h1><%= t('.title') %></h1>
+    <h2><%= t('.subtitle') %></h2>
+    <p><%= t('.description') %></p>
+  </div>
+  <%= image_tag("CHARTE-ENGAGEMENT-CDJ-2017-modif09-04-2018_avril2018_web.jpg", alt: "Charte d'engagement du conseil des jeunes") %>
+
+  <div class="small-12 medium-3 column">
+    <%= render '/shared/print' %>
+  </div>
+</div>

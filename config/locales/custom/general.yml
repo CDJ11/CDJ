@@ -84,7 +84,7 @@ fr:
   form:
     accept_terms: J'accepte la %{policy} et les %{conditions}
     policy: politique de confidentialité
-    conditions: conditions d'utilisation
+    conditions: charte d'engagement
     debate: Idée
     proposal: Projet
   geozones:
@@ -92,6 +92,7 @@ fr:
     all: Tous les cantons
   layouts:
     footer:
+      conditions: Charte d'engagement
       consul: outil Consul
       contact_us: Pour l'assistance technique visitez la
       copyright: Conseil Général de l'Aude, %{year}

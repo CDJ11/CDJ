@@ -1,5 +1,9 @@
 fr:
   pages:
+    conditions:
+      title: Charte d'engagement
+      subtitle: La charte d'engagement du Conseil Départemental des Jeunes de l'Aude
+      description: Vous trouverez ici la charte d'engagement, à approuver et respecter pour intégrer le Conseil des Jeunes.
     help:
       title: "Le %{org}"
       subtitle: "Découvre ce que tu peux faire pour la collectivité, et ce qu'elle peut faire pour toi"
@@ -15,7 +19,7 @@ fr:
         description: "Créer un fil dans lequel tu pourras discuter de tous les sujets que tu veux partager avec d'autres personnes du département."
         feature_link: "te connecter"
         feature_html: "Les idées peuvent être évaluées à l'aide des boutons Soutenir ou Contester que tu trouveras dans chacunes d'elles."
-        image_alt: "Boutons pour noter les débats"
+        image_alt: "Boutons pour noter les idées"
         figcaption: "Boutons 'Soutenir' et 'Contester' pour interagir avec les idées et donner ton avis"
       proposals:
         title: "Projets"
@@ -34,6 +38,11 @@ fr:
         title: "Problèmes techniques ?"
         description: "Lisez la FAQ et trouvez la réponse à vos questions."
         button: Voir les questions fréquentes
+        page:
+          title: "Foire aux questions"
+          description: "Cette page répond aux questions les plus communes des utilisateurs du site."
+          faq_1_title: "Question 1"
+          faq_1_description: "Il s’agit d’un exemple pour la description de la première question."
       other:
         title: Autre information utile
         how_to_use: "Utiliser Consul dans ton organisation"
@@ -46,3 +55,6 @@ fr:
           Si tu es un.e développeu.r.se, tu peux voir le code et nous aider à l'améliorer en allant sur notre version de l'[applicationConsul](https://github.com/CDJ11/CDJ 'Github consul CDJ').
       titles:
         how_to_use: Utilise Consul dans ton organisation
+    titles:
+      conditions: Charte d'engagement
+      help: "Qu'est-ce que %{org} ?"

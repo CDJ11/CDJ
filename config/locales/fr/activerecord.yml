@@ -77,7 +77,7 @@ fr:
         one: "Processus"
         other: "Processus"
       legislation/proposal:
-        one: "Proposal"
+        one: "Proposition"
         other: "Propositions"
       legislation/draft_versions:
         one: "Ébauche"
