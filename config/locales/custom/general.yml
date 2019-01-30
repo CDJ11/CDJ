@@ -33,6 +33,7 @@ fr:
       debate_text: De quoi veux-tu parler
       debate_title: Donne lui un titre
       debate_title_holder: Titre de l'idée
+      tags_instructions: Taguer cette idée
       tags_label: Ajoute des tags
       tags_placeholder: Ajoute les tags que tu aimerais utiliser, séparés par des virgules
     index:
@@ -82,7 +83,7 @@ fr:
       flag: Cette idée a été signalée comme inapproprié par plusieurs utilisateurs
       destroy_debate_link: Supprimer
   form:
-    accept_terms: J'accepte la %{policy} et les %{conditions}
+    accept_terms: J'accepte la %{policy} et la %{conditions}
     policy: politique de confidentialité
     conditions: charte d'engagement
     debate: Idée

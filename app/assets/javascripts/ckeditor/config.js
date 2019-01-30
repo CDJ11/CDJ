@@ -107,7 +107,6 @@ CKEDITOR.editorConfig = function( config )
   config.toolbar_cdj = [
     { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat' ] },
     { name: 'styles', items: [ 'Format', 'Font', 'FontSize' ] },
-    { name: 'paragraph', groups: [ 'list' ], items: [ 'NumberedList', 'BulletedList' ] },
-    { name: 'links', items: [ 'Link', 'Unlink' ] }
+    { name: 'paragraph', groups: [ 'list' ], items: [ 'NumberedList', 'BulletedList' ] }
   ];
 };
