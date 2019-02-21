@@ -1,4 +1,5 @@
 class Communication::BannersController < Communication::BaseController
+  include Translatable
 
   has_filters %w{all with_active with_inactive}, only: :index
 
