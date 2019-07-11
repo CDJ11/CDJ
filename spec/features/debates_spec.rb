@@ -3,6 +3,16 @@ require 'rails_helper'
 
 feature 'Debates' do
 
+  before do
+    Setting['feature.budgets'] = true
+    Setting['feature.debates'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+    Setting['feature.debates'] = nil
+  end
+
   scenario 'Disabled with a feature flag' do
     Setting['feature.debates'] = nil
     expect{ visit debates_path }.to raise_exception(FeatureFlags::FeatureDisabled)
@@ -579,9 +589,10 @@ feature 'Debates' do
         end
       end
 
+      # CDJ Aude Custom : author types are unused and hidden
       context "Search by author type" do
 
-        scenario "Public employee", :js do
+        xscenario "Public employee", :js do
           ana = create :user, official_level: 1
           john = create :user, official_level: 2
 
@@ -604,7 +615,7 @@ feature 'Debates' do
           end
         end
 
-        scenario "Municipal Organization", :js do
+        xscenario "Municipal Organization", :js do
           ana = create :user, official_level: 2
           john = create :user, official_level: 3
 
@@ -627,7 +638,7 @@ feature 'Debates' do
           end
         end
 
-        scenario "General director", :js do
+        xscenario "General director", :js do
           ana = create :user, official_level: 3
           john = create :user, official_level: 4
 
@@ -650,7 +661,7 @@ feature 'Debates' do
           end
         end
 
-        scenario "City councillor", :js do
+        xscenario "City councillor", :js do
           ana = create :user, official_level: 4
           john = create :user, official_level: 5
 
@@ -673,7 +684,7 @@ feature 'Debates' do
           end
         end
 
-        scenario "Mayoress", :js do
+        xscenario "Mayoress", :js do
           ana = create :user, official_level: 5
           john = create :user, official_level: 4
 
@@ -828,7 +839,8 @@ feature 'Debates' do
           end
         end
 
-        scenario "Search by multiple filters", :js do
+        # CDJ Aude Custom : fixed in custom spec
+        xscenario "Search by multiple filters", :js do
           ana  = create :user, official_level: 1
           john = create :user, official_level: 1
 
@@ -851,7 +863,8 @@ feature 'Debates' do
           end
         end
 
-        scenario "Maintain advanced search criteria", :js do
+        # CDJ Aude Custom : fixed in custom spec
+        xscenario "Maintain advanced search criteria", :js do
           visit debates_path
           click_link "Advanced search"
 
@@ -927,7 +940,7 @@ feature 'Debates' do
 
     scenario "Reorder by recommendations results maintaing search" do
       Setting['feature.user.recommendations'] = true
-      Setting['feature.user.recommendations_for_debates'] = true
+      Setting['feature.user.recommendations_on_debates'] = true
 
       user = create(:user, recommended_debates: true)
       login_as(user)
@@ -953,7 +966,7 @@ feature 'Debates' do
       end
 
       Setting['feature.user.recommendations'] = nil
-      Setting['feature.user.recommendations_for_debates'] = nil
+      Setting['feature.user.recommendations_on_debates'] = nil
     end
 
     scenario 'After a search do not show featured debates' do

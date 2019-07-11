@@ -23,6 +23,10 @@ fr:
         one: "Image"
         other: "Images"
     attributes:
+      debate:
+        terms_of_service: "Charte d'engagement"
+      proposal:
+        terms_of_service: "Charte d'engagement"
       user:
         login: Email ou nom d'utilisateur
       image:

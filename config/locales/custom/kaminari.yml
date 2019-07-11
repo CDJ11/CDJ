@@ -1,0 +1,10 @@
+---
+fr:
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          one: Il y a <b>1</b> %{entry_name}
+          other: Il y a <b> %{count}</b> %{entry_name}
+          zero: "aucun(e) %{entry_name} ne peut être trouvé(e)"
+

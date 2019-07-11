@@ -6,6 +6,14 @@ feature 'Votes' do
     @manuela = create(:user, verified_at: Time.current)
   end
 
+  before do
+    Setting['feature.budgets'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+  end
+
   feature 'Investments' do
 
     let(:budget)  { create(:budget, phase: "selecting") }

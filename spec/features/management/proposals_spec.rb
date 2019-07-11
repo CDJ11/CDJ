@@ -6,6 +6,14 @@ feature 'Proposals' do
     login_as_manager
   end
 
+  before do
+    Setting['feature.map'] = nil
+  end
+
+  after do
+    Setting['feature.map'] = nil
+  end
+
   context "Create" do
 
     scenario 'Creating proposals on behalf of someone' do

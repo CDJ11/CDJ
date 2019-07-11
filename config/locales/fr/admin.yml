@@ -64,10 +64,10 @@ fr:
         filters:
           all: Tous
           on_comments: Commentaires
-          on_debates: Débats
+          on_debates: Discussions
           on_proposals: Propositions
           on_users: Utilisateurs
-          on_system_emails: System emails
+          on_system_emails: Emails système
         title: Activité de modération
         type: Type
         no_activity: Il n’y a aucune activité de modérateurs.
@@ -79,7 +79,7 @@ fr:
         filters:
           open: Ouvert
           finished: Terminé
-        budget_investments: Voir les propositions d'investissement
+        budget_investments: Gestion de projets
         table_name: Nom
         table_phase: Phases
         table_investments: Propositions d'investissement
@@ -87,6 +87,7 @@ fr:
         table_edit_budget: Modifier
         edit_groups: Modifier les groupes de rubriques
         edit_budget: Modifier le budget
+        no_budgets: "There are no open budgets."
       create:
         notice: Nouveau budget participatif créé avec succès !
       update:
@@ -269,8 +270,6 @@ fr:
         show_image: "Afficher l'image"
         documents: "Documents"
       form:
-        add_language: Ajouter une langue
-        remove_language: Supprimer une langue
         admin_statuses: Administrer les statuts d'investissement
         no_statuses_defined: Il n'y a pas encore de statuts d'investissement définis
       new:
@@ -352,8 +351,8 @@ fr:
           all: Tous
           with_confirmed_hide: Confirmé
           without_confirmed_hide: En attente
-        title: Hidden budgets investments
-        no_hidden_budget_investments: There are no hidden budget investments
+        title: Investissements de budgets cachés
+        no_hidden_budget_investments: Il n’y a aucun investissement budgétaire caché
     legislation:
       processes:
         create:
@@ -374,7 +373,9 @@ fr:
           enabled: Activé
           process: Processus
           debate_phase: Phase de débat
-          allegations_phase: Phase de brouillon
+          draft_phase: Draft phase
+          draft_phase_description: If this phase is active, the process won't be listed on processes index. Allow to preview the process and create content before the start.
+          allegations_phase: Comments phase
           proposals_phase: Phase de propositions
           start: Début
           end: Fin
@@ -386,7 +387,7 @@ fr:
         index:
           create: Nouveau processus
           delete: Supprimer
-          title: Processus législatifs
+          title: Legislation processes
           filters:
             open: Ouvert
             next: Suivant
@@ -396,6 +397,12 @@ fr:
           back: Retour
           title: Créer un nouveau processus législatif collaboratif
           submit_button: Créer un processus
+        proposals:
+          select_order: Trier par
+          orders:
+            id: Id
+            title: Titre
+            supports: Soutiens
         process:
           title: Processus
           comments: Commentaires
@@ -411,12 +418,16 @@ fr:
           proposals: Propositions
       proposals:
         index:
-          title: Propositions
+          title: Titre
           back: Retour
+          id: Id
+          supports: Soutiens
+          select: Sélectionner
+          selected: Sélectionné
         form:
           custom_categories: Catégories
           custom_categories_description: Catégories que les utilisateurs peuvent sélectionner créer une proposition.
-          custom_categories_placeholder: Enter the tags you would like to use, separated by commas (,) and between quotes ("")
+          custom_categories_placeholder: Entrez les balises que vous souhaitez utiliser, séparés par des virgules (,) et entre guillemets ( "")
       draft_versions:
         create:
           notice: 'Le brouillon a été créé avec succès. <a href="%{link}"> cliquez ici pour le visualiser</a>'
@@ -524,7 +535,7 @@ fr:
       hidden_comments: Commentaires masqués
       hidden_debates: Débats masqués
       hidden_proposals: Propositions masquées
-      hidden_budget_investments: Hidden budget investments
+      hidden_budget_investments: Investissements de budget cachés
       hidden_proposal_notifications: Masquer les notifications de propositions
       hidden_users: Utilisateurs masqués
       administrators: Administrateurs
@@ -533,7 +544,7 @@ fr:
       messaging_users: Messages aux utilisateurs
       newsletters: Bulletins d’information
       admin_notifications: Notifications
-      system_emails: System Emails
+      system_emails: Emails système
       emails_download: Téléchargement des courriels
       valuators: Évaluateurs
       poll_officers: Assesseurs
@@ -552,16 +563,15 @@ fr:
         pages: Pages personnalisées
         images: Images personnalisées
         content_blocks: Blocs de contenu personnalisés
-        information_texts: Custom information texts
+        information_texts: Textes d’information personnalisés
         information_texts_menu:
-          debates: "Debates"
-          community: "Community"
-          proposals: "Proposals"
-          polls: "Polls"
-          layouts: "Layouts"
+          debates: "Débats"
+          community: "Communauté"
+          proposals: "Propositions"
+          polls: "Sondages"
+          layouts: "Mise en page"
           mailers: "Courriels"
           management: "Gestion"
-          guides: "Guides"
           welcome: "Bienvenue"
         buttons:
           save: "Sauvegarder"
@@ -579,6 +589,7 @@ fr:
         title: Administrateurs
         name: Nom
         email: Email
+        id: Administrator ID
         no_administrators: Il n'y a pas d'administrateurs.
       administrator:
         add: Ajouter
@@ -633,6 +644,9 @@ fr:
         title: Aperçu du bulletin d'information
         send: Envoyer
         affected_users: (%{n} utilisateurs concernés)
+        sent_emails:
+          one: 1 email envoyé
+          other: "%{count} emails sent"
         sent_at: Envoyé à
         subject: Objet
         segment_recipient: Destinataires
@@ -660,8 +674,10 @@ fr:
         empty_notifications: Aucune notification à afficher
       new:
         section_title: Nouvelle notification
+        submit_button: Créez la notification
       edit:
         section_title: Editer la notification
+        submit_button: Editer la notification
       show:
         section_title: Aperçu de la notification
         send: Envoyer la notification
@@ -677,16 +693,16 @@ fr:
         send_alert: Êtes-vous sûr de vouloir envoyer cette notification à %{n} utilisateurs ?
     system_emails:
       preview_pending:
-        action: Preview Pending
+        action: Aperçu en attente
         preview_of: Aperçu de %{name}
         pending_to_be_sent: Ceci est le contenu en attente d’être envoyé
-        moderate_pending: Moderate notification send
-        send_pending: Send pending
+        moderate_pending: Modérer la notification envoyée
+        send_pending: Envoi en attente
         send_pending_notification: Les notifications en attente ont été envoyées avec succès
       proposal_notification_digest:
-        title: Proposal Notification Digest
-        description: Gathers all proposal notifications for an user in a single message, to avoid too much emails.
-        preview_detail: Users will only recieve notifications from the proposals they are following
+        title: Résumé des notifications des propositions
+        description: Rassemble toutes les notifications de proposition pour un utilisateur dans un seul message, afin d’éviter trop d’e-mails.
+        preview_detail: Les utilisateurs recevront uniquement les notifications des propositions qu’ils suivent
     emails_download:
       index:
         title: Téléchargement des courriels
@@ -1306,6 +1322,11 @@ fr:
         content_block:
           body: Contenu
           name: Nom
+          names:
+            top_links: Liens du haut
+            footer: Pied de page
+            subnavigation_left: Navigation principale gauche
+            subnavigation_right: Navigation principale droite
       images:
         index:
           title: Images personnalisées
@@ -1344,11 +1365,11 @@ fr:
         page:
           created_at: Créé le
           status: Statut
-          title: Titre
           updated_at: Mis-à-jour le
           status_draft: Brouillon
           status_published: Publié
-          locale: Langue
+          title: Titre
+          slug: Slug
     homepage:
       title: Page d’accueil
       description: Les modules actifs apparaissent dans la page d’accueil dans le même ordre, comme en l’espèce.
@@ -1377,3 +1398,6 @@ fr:
         submit_header: Sauvegarder l'entête
         card_title: Modifier l'encart
         submit_card: Sauvegarder l'encart
+    translations:
+      remove_language: Retirer la langue
+      add_language: Ajouter une langue

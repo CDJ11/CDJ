@@ -10,6 +10,14 @@ feature 'Admin can change the groups name' do
     login_as(admin.user)
   end
 
+    before do
+      Setting['feature.budgets'] = true
+    end
+
+    after do
+      Setting['feature.budgets'] = nil
+    end
+
   scenario "Show button" do
     visit admin_budget_path(group.budget)
 

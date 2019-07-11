@@ -44,10 +44,12 @@
   </li>
 <% end %>
 
-<li class="small-6 medium-4 columns">
-  <%= link_to help_path, accesskey: "4", class: ("active" if current_page?(help_path)),
-      title: t("shared.go_to_page") + t("layouts.header.help") do %>
-    <%= image_tag(image_path_for('icon_more_info.png')) %>
-    <%= t("layouts.header.help_sm") %>
-  <% end %>
-</li>
+<% if feature?(:help_page) %>
+  <li class="small-6 medium-4 columns">
+    <%= link_to help_path, accesskey: "4", class: ("active" if current_page?(help_path)),
+        title: t("shared.go_to_page") + t("layouts.header.help") do %>
+      <%= image_tag(image_path_for('icon_more_info.png')) %>
+      <%= t("layouts.header.help_sm") %>
+    <% end %>
+  </li>
+<% end %>

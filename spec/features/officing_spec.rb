@@ -122,7 +122,8 @@ feature 'Poll Officing' do
     expect(page).not_to have_css('#moderation_menu')
   end
 
-  xscenario 'Officing dashboard available for multiple sessions', :js do
+  # CDJ custom : broken but no time to investigate
+  xscenario 'Officing dashboard available for multiple sessions', :js, :with_frozen_time do
     poll = create(:poll)
     booth = create(:poll_booth)
     booth_assignment = create(:poll_booth_assignment, poll: poll, booth: booth)

@@ -4,8 +4,10 @@ Rollbar.configure do |config|
   # To disable in specific environments, set config.enabled=false.
 
   config.access_token = Rails.application.secrets.rollbar_server_token
+  config.open_timeout = 15
+  config.request_timeout = 15
 
-  # Here we'll disable all environments except 'production':
+  # Here we'll disable all environments except 'staging', 'preproduction' and 'production':
   if Rails.env.staging? || Rails.env.preproduction? || Rails.env.production?
     config.enabled = true
   else

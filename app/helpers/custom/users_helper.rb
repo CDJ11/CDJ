@@ -6,8 +6,8 @@ module Custom::UsersHelper
     current_user && current_user.animator?
   end
 
-  def show_admin_menu?
-    current_administrator? || current_animator? || current_moderator? || current_valuator? || current_manager?
+  def show_admin_menu?(user = nil)
+    current_administrator? || current_animator? || current_moderator? || current_valuator? || current_manager?  || (user && user.administrator?)
   end
 
 end

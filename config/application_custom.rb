@@ -4,7 +4,7 @@ module Consul
     config.time_zone = 'Europe/Paris'
     # English needed for Faver dev_seeds
     if Rails.env.test? || Rails.env.development?
-      config.i18n.available_locales = [:fr, :en]
+      config.i18n.available_locales = [:fr, :en, :es, "pt-BR"]
     else
       config.i18n.available_locales = [:fr]
     end
@@ -13,3 +13,5 @@ module Consul
     config.autoload_paths << "#{Rails.root}/app/helpers/custom"
   end
 end
+
+require "./lib/custom/user_segments.rb"

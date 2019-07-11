@@ -84,7 +84,7 @@ feature 'Valuation' do
     end
   end
 
-  scenario 'Valuation access links' do
+  xscenario 'Valuation access links' do
     create(:valuator, user: user)
     create(:budget)
 

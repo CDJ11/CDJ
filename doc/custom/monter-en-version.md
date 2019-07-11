@@ -5,12 +5,13 @@
 Exemple pour la montée à 0.16 : 
 
 ```
-git checkout -b upstream
-g fetch --prune
-g fetch upstream
 git checkout -b consul016
+g fetch --prune # si besoin
+g fetch upstream
 g merge v0.16
 ```
+
+... Et commencer par résoudre tous les conflits :)
 
 ## Comparer les changements depuis la précédente version.
 
@@ -20,7 +21,7 @@ Par exemple, pour comparer la v0.15 et la v0.16, lors du passage à la v0.16 :
 
 Etre attentif à tout changement intervenu sur des fichiers qui ont été customisé.
 
-Etre attentif à tout changement dans les menus admin, car des nouveaux fichiers sont des copies, placés ailleurs, de fichiers existants.
+Etre attentif à tout changement dans les menus admin, car certains nouveaux fichiers sont des copies, placés ailleurs, de fichiers existants.
 
 
 | Fichier nouveau                                                 | Fichier source d'inspiration                    |

@@ -8,7 +8,6 @@ Dir["./spec/models/concerns/*.rb"].each { |f| require f }
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
 Dir["./spec/shared/**/*.rb"].sort.each { |f| require f }
 Dir["./spec/custom/support/**/*.rb"].sort.each { |f| require f }
-Dir["./spec/custom/factories.rb"].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
@@ -45,8 +44,9 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
     I18n.locale = :en
     Globalize.locale = I18n.locale
-    load Rails.root.join('db', 'seeds.rb').to_s
+    # load Rails.root.join('db', 'seeds.rb').to_s # Custom CDJ Aude
     load Rails.root.join('db', 'custom_seeds.rb').to_s # Custom CDJ Aude
+    load Rails.root.join('db', 'custom_seeds', 'settings.rb').to_s # Custom CDJ Aude
     Setting["feature.user.skip_verification"] = nil
     Setting["feature.cdj_aude"] = nil # Custom CDJ Aude
   end
@@ -84,6 +84,14 @@ RSpec.configure do |config|
   config.after(:each, type: :feature) do
     Bullet.perform_out_of_channel_notifications if Bullet.notification?
     Bullet.end_request
+  end
+
+  config.before(:each, :with_frozen_time) do
+    travel_to Time.now # TODO: use `freeze_time` after migrating to Rails 5.
+  end
+
+  config.after(:each, :with_frozen_time) do
+    travel_back
   end
 
   # Allows RSpec to persist some state between runs in order to support

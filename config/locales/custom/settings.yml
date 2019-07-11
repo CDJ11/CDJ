@@ -5,7 +5,9 @@ fr:
     max_votes_for_debate_edit: "Nombre de votes à partir duquel une idée ne peut plus être éditée"
     proposal_code_prefix: "Préfixe pour les codes des projets"
     votes_for_proposal_success: "Nombre de votes nécessaires pour l'approbation d'un projet"
+    votes_for_debate_success: "Nombre de votes nécessaires pour l'approbation d'une idée"
     months_to_archive_proposals: "Mois pour archiver les projets"
     feature:
       proposals: Projets
       debates: Idées
+    max_age_to_participate: Âge maximum de participation

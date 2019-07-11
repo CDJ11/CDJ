@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Officing Results' do
+feature 'Officing Results', :with_frozen_time do
 
   background do
     travel_to Time.now # TODO: use `freeze_time` after migrating to Rails 5.

@@ -20,6 +20,8 @@ fr:
       social_networks: "Réseaux sociaux"
       add_provider: "Lier votre compte à %{kind}"
       remove_provider: "Délier votre compte de %{kind}"
+      show_debates_recommendations: Voir les recommandations d'idées
+      show_proposals_recommendations: Voir les recommandations de projets
   debates:
     create:
       form:
@@ -31,6 +33,7 @@ fr:
       debate_text: De quoi veux-tu parler
       debate_title: Donne lui un titre
       debate_title_holder: Titre de l'idée
+      tags_instructions: Taguer cette idée
       tags_label: Ajoute des tags
       tags_placeholder: Ajoute les tags que tu aimerais utiliser, séparés par des virgules
     index:
@@ -40,8 +43,13 @@ fr:
         hot_score: La plus active
         most_commented: La plus commentée
       recommendations:
-        without_results: Il n’y a pas d'idée liée à vos centres d’intérêt
-        without_interests: Suivez des projets afin que nous puissions vous suggérer des recommandations
+        without_results: Il n’y a pas d'idées liée à vos centres d’intérêt
+        without_interests: Suivez des idées afin que nous puissions vous suggérer des recommandations
+        disable: "Les recommandations d'idées cesseront d'apparaître si vous les rejetez. Vous pouvez les réactiver sur la page 'Mon compte'"
+        actions:
+          success: "Les recommandations d'idées sont maintenant désactivées pour ce compte"
+          error: "Une erreur est survenue. Veuillez vous rendre sur la page 'Votre compte' pour désactiver manuellement les recommandations d'idées"
+
       search_form:
         placeholder: Rechercher une idée...
       search_results_html:
@@ -75,9 +83,9 @@ fr:
       flag: Cette idée a été signalée comme inapproprié par plusieurs utilisateurs
       destroy_debate_link: Supprimer
   form:
-    accept_terms: J'accepte la %{policy} et les %{conditions}
+    accept_terms: J'accepte la %{policy} et la %{conditions}
     policy: politique de confidentialité
-    conditions: conditions d'utilisation
+    conditions: charte d'engagement
     debate: Idée
     proposal: Projet
   geozones:
@@ -85,6 +93,7 @@ fr:
     all: Tous les cantons
   layouts:
     footer:
+      conditions: Charte d'engagement
       consul: outil Consul
       contact_us: Pour l'assistance technique visitez la
       copyright: Conseil Général de l'Aude, %{year}
@@ -192,6 +201,7 @@ fr:
         edit: "Avant qu'il soit partagé, vous pouvez changer le texte autant que vous le désirez."
         view_proposal: Pas maintenant, revenir au projet
       already_supported: Vous avez déjà soutenu ce projet. Partagez-le !
+      reason_for_supports_necessary: ""
       support_title: Soutenir ce projet
       archived: "Ce projet a été archivée et ne peut recueillir de soutiens."
       successful: "Ce projet a atteint le nombre de soutiens requis et sera soumise au vote lors du %{voting}."
@@ -248,6 +258,7 @@ fr:
     tags_cloud:
       districts: "Cantons"
       districts_list: "Liste des cantons"
+      tags: Derniers tags
     unflag: "Retirer mon signalement"
   stats:
     index:
@@ -276,6 +287,12 @@ fr:
     spending_proposals:
       not_verified: Seuls les utilisateurs vérifiés peuvent voter sur les projets; %{verify_account}.
   welcome:
+    feed:
+      most_active:
+        debates: "Idées les plus actives"
+        proposals: "Projets les plus actifs"
+      see_all_debates: Voir toutes les idées
+      see_all_proposals: Voir tous les projets
     debates:
       description: Partage tes idées. Discutes-en avec les autres membres et donne ton avis sur les idées existantes. Si ton idée reçoit un certain nombre de like, elle sera étudiée pour devenir un projet
       title: 1- Idée

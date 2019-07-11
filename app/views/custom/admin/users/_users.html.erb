@@ -1,5 +1,8 @@
 <% if @users.any? %>
-  <h3 class="margin"><%= page_entries_info @users %></h3>
+
+  <%= link_to "Export csv", admin_users_path(params: params.to_h, format: "csv"), class: "button secondary small float-right" %>
+
+  <h3 class="margin" style="clear: none;"><%= page_entries_info @users %></h3>
 
   <table>
     <thead>

@@ -2,7 +2,7 @@
   <ul id="admin_menu" data-accordion-menu data-multi-open="false">
 
     <% if feature?(:articles) %>
-      <li class="section-title <%= "active" if controller_name == "articles" %>">
+      <li class="section-title <%= "is-active" if controller_name == "articles" %>">
         <%= link_to communication_articles_path do %>
           <span class="icon-edit"></span>
           <strong><%= t('admin.menu.articles') %></strong>
@@ -16,20 +16,28 @@
         <strong><%= t("admin.menu.title_categories") %></strong>
       </a>
       <ul <%= "class=is-active" if menu_settings? %>>
-        <li <%= "class=active" if controller_name == "tags" %>>
+        <li <%= "class=is-active" if controller_name == "tags" %>>
           <%= link_to t("admin.menu.proposals_topics"), communication_tags_path %>
         </li>
       </ul>
     </li>
 
-    <li class="section-title" <%= "class=active" if %w(newsletters emails_download).include?(controller_name) %>>
+    <% messages_sections = %w(newsletters emails_download admin_notifications system_emails) %>
+    <% messages_menu_active = messages_sections.include?(controller_name) %>
+    <li class="section-title" <%= "class=is-active" if messages_menu_active %>>
       <a href="#">
         <span class="icon-zip"></span>
-        <strong><%= t("admin.menu.emails") %></strong>
+        <strong><%= t("admin.menu.messaging_users") %></strong>
       </a>
-      <ul id="emails_menu" <%= "class=is-active" if %w(newsletters emails_download).include?(controller_name) %>>
-        <li <%= "class=active" if controller_name == "newsletters" %>>
+      <ul id="messaging_users_menu" <%= "class=is-active" if messages_menu_active %>>
+        <li <%= "class=is-active" if controller_name == "newsletters" %>>
           <%= link_to t("admin.menu.newsletters"), communication_newsletters_path %>
+        </li>
+        <li <%= "class=is-active" if controller_name == "admin_notifications" %>>
+          <%= link_to t("admin.menu.admin_notifications"), communication_admin_notifications_path %>
+        </li>
+        <li <%= "class=is-active" if controller_name == "system_emails" %>>
+          <%= link_to t("admin.menu.system_emails"), communication_system_emails_path %>
         </li>
         <li <%= "class=active" if controller_name == "emails_download" %>>
           <%= link_to t("admin.menu.emails_download"), communication_emails_download_index_path %>

@@ -1,4 +1,5 @@
 require_dependency Rails.root.join('app', 'models', 'user').to_s
+require 'csv'
 
 class User < ActiveRecord::Base
 
@@ -31,8 +32,28 @@ class User < ActiveRecord::Base
 
   scope :animators,     -> { joins(:animator) }
 
+  # Class Methods ==============================================================
+  def self.to_csv
+    headers =  %w{ Id Nom Prenom CodePostal Commune DateNaissance Genre Email}
+    ::CSV.generate(headers: true) do |csv|
+      csv << headers
+      all.each do |user|
+        csv << [
+          user.id,
+          user.lastname,
+          user.firstname,
+          user.postal_code,
+          user.city,
+          user.date_of_birth,
+          user.gender,
+          user.email,
+        ]
+      end
+    end
+  end
+
   # Instance methods ==================================================
-  
+
   def animator?
     animator.present?
   end

@@ -50,6 +50,7 @@ feature 'Account' do
     expect(find("#account_email_on_direct_message")).not_to be_checked
   end
 
+  # CDJ custom : fixed in /custom
   xscenario 'Edit email address' do
     visit account_path
 

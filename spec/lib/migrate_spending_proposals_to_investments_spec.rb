@@ -2,8 +2,15 @@ require 'rails_helper'
 
 describe MigrateSpendingProposalsToInvestments do
 
-  let(:importer) { described_class.new }
+  before do
+    Setting['feature.map'] = nil
+  end
 
+  after do
+    Setting['feature.map'] = nil
+  end
+
+  let(:importer) { described_class.new }
   describe '#import' do
 
     it "Creates the budget if it doesn't exist" do

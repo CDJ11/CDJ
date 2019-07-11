@@ -7,6 +7,14 @@ feature 'Legislation Draft Versions' do
     user
   end
 
+  before do
+    Setting['feature.legislation'] = true
+  end
+
+  after do
+    Setting['feature.legislation'] = nil
+  end
+
   context "See draft text page" do
     before do
       @process = create(:legislation_process)
@@ -74,7 +82,9 @@ feature 'Legislation Draft Versions' do
 
         expect(page).to have_content("Final body")
         expect(page).not_to have_content("See all comments")
-        expect(page).not_to have_content("Comments")
+        within(".draft-panels") do
+          expect(page).not_to have_content("Comments")
+        end
       end
     end
   end

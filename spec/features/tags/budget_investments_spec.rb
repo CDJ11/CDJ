@@ -12,10 +12,12 @@ feature 'Tags' do
 
   before do
     Setting['feature.budgets'] = true
+    Setting['feature.map'] = nil
   end
 
   after do
     Setting['feature.budgets'] = nil
+    Setting['feature.map'] = nil
   end
 
   scenario 'Index' do
@@ -262,6 +264,12 @@ feature 'Tags' do
           investment.update(selected: true, feasibility: "feasible")
         end
 
+        if budget.finished?
+          [investment1, investment2, investment3].each do |investment|
+            investment.update(selected: true, feasibility: "feasible", winner: true)
+          end
+        end
+
         login_as(admin) if budget.drafting?
         visit budget_path(budget)
         click_link group.name
@@ -305,6 +313,12 @@ feature 'Tags' do
 
         [investment1, investment2, investment3].each do |investment|
           investment.update(selected: true, feasibility: "feasible")
+        end
+
+        if budget.finished?
+          [investment1, investment2, investment3].each do |investment|
+            investment.update(selected: true, feasibility: "feasible", winner: true)
+          end
         end
 
         login_as(admin) if budget.drafting?

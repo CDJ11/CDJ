@@ -7,6 +7,11 @@ feature 'Admin legislation processes' do
     login_as(admin.user)
   end
 
+  it_behaves_like "translatable",
+                  "legislation_process",
+                  "edit_admin_legislation_process_path",
+                  %w[title summary description additional_info]
+
   context "Feature flag" do
 
     scenario 'Disabled with a feature flag' do
@@ -14,6 +19,14 @@ feature 'Admin legislation processes' do
       expect{ visit admin_legislation_processes_path }.to raise_exception(FeatureFlags::FeatureDisabled)
     end
 
+  end
+
+  before do
+    Setting['feature.legislation'] = true
+  end
+
+  after do
+    Setting['feature.legislation'] = nil
   end
 
   context "Index" do
@@ -38,9 +51,9 @@ feature 'Admin legislation processes' do
 
       click_link "New process"
 
-      fill_in 'legislation_process_title', with: 'An example legislation process'
-      fill_in 'legislation_process_summary', with: 'Summary of the process'
-      fill_in 'legislation_process_description', with: 'Describing the process'
+      fill_in 'Process Title', with: 'An example legislation process'
+      fill_in 'Summary', with: 'Summary of the process'
+      fill_in 'Description', with: 'Describing the process'
 
       base_date = Date.current
       fill_in 'legislation_process[start_date]', with: base_date.strftime("%d/%m/%Y")
@@ -73,11 +86,14 @@ feature 'Admin legislation processes' do
   end
 
   context 'Update' do
-    scenario 'Remove summary text', js: true do
-      process = create(:legislation_process,
-                       title: 'An example legislation process',
-                       summary: 'Summarizing the process',
-                       description: 'Description of the process')
+    let!(:process) do
+      create(:legislation_process,
+             title: 'An example legislation process',
+             summary: 'Summarizing the process',
+             description: 'Description of the process')
+    end
+
+    scenario 'Remove summary text' do
       visit admin_root_path
 
       within('#side_menu') do
@@ -90,7 +106,7 @@ feature 'Admin legislation processes' do
       expect(find("#legislation_process_debate_phase_enabled")).to be_checked
       expect(find("#legislation_process_published")).to be_checked
 
-      fill_in 'legislation_process_summary', with: ''
+      fill_in 'Summary', with: ''
       click_button "Save changes"
 
       expect(page).to have_content "Process updated successfully"
@@ -100,11 +116,7 @@ feature 'Admin legislation processes' do
       expect(page).to have_content 'Description of the process'
     end
 
-    scenario 'Deactivate draft publication', js: true do
-      process = create(:legislation_process,
-                       title: 'An example legislation process',
-                       summary: 'Summarizing the process',
-                       description: 'Description of the process')
+    scenario 'Deactivate draft publication' do
       visit admin_root_path
 
       within('#side_menu') do
@@ -125,6 +137,17 @@ feature 'Admin legislation processes' do
       click_link 'Click to visit'
 
       expect(page).not_to have_content 'Draft publication'
+    end
+
+    scenario "Change proposal categories" do
+      visit edit_admin_legislation_process_path(process)
+      within(".admin-content") { click_link "Proposals" }
+
+      fill_in "Categories", with: "recycling,bicycles"
+      click_button "Save changes"
+
+      visit admin_legislation_process_proposals_path(process)
+      expect(page).to have_field("Categories", with: "bicycles, recycling")
     end
   end
 end

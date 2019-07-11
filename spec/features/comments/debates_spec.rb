@@ -495,6 +495,7 @@ feature 'Commenting debates' do
       end
     end
 
+    # CDJ custom
     xscenario 'Trying to vote multiple times', :js do
       visit debate_path(@debate)
 

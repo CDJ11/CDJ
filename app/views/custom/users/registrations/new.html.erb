@@ -6,11 +6,6 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render 'shared/errors', resource: resource %>
 
-  <p>
-    <%= t("devise_views.users.registrations.new.organization_signup",
-        signup_link: link_to(t("devise_views.users.registrations.new.organization_signup_link"), new_organization_registration_path)).html_safe %>
-  </p>
-
   <% if resource.identities.any? %>
     <div class='callout primary'>
       <p>Votre compte est maintenant lié à <%= resource.identities.last.provider %>.</p>
@@ -40,7 +35,7 @@
                                 label: false,
                                 aria: {describedby: "username-help-text"} %>
 
-      <%= f.invisible_captcha :family_name %>
+      <%= f.invisible_captcha(:family_name, { autocomplete: 'off' }) %>
 
 
       <div class="date-of-birth">

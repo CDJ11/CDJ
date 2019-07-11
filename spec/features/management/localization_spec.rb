@@ -6,14 +6,14 @@ feature 'Localization' do
     login_as_manager
   end
 
-  xscenario 'Wrong locale' do
+  scenario 'Wrong locale' do
     visit management_root_path(locale: :es)
     visit management_root_path(locale: :klingon)
 
     expect(page).to have_text('Gestión')
   end
 
-  xscenario 'Available locales appear in the locale switcher' do
+  scenario 'Available locales appear in the locale switcher' do
     visit management_root_path
 
     within('.locale-form .js-location-changer') do
@@ -22,13 +22,13 @@ feature 'Localization' do
     end
   end
 
-  xscenario 'The current locale is selected' do
+  scenario 'The current locale is selected' do
     visit management_root_path
     expect(page).to have_select('locale-switcher', selected: 'English')
     expect(page).to have_text('Management')
   end
 
-  xscenario 'Changing the locale', :js do
+  scenario 'Changing the locale', :js do
     visit management_root_path
     expect(page).to have_content('Language')
 

@@ -8,6 +8,14 @@ feature 'Ballots' do
   let!(:california) { create(:budget_heading, group: states, name: "California", price: 1000) }
   let!(:new_york)   { create(:budget_heading, group: states, name: "New York", price: 1000000) }
 
+  before do
+    Setting['feature.budgets'] = true
+  end
+
+  after do
+    Setting['feature.budgets'] = nil
+  end
+
   context "Voting" do
 
     background do
