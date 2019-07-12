@@ -4,6 +4,19 @@ class Admin::UsersController < Admin::BaseController
 
   before_action :find_user, only: [:cdj_show, :print_password, :reset_password, :change_password]
 
+  def index
+    @users = User.by_username_email_or_document_number(params[:search]) if params[:search]
+    all_users = @users.active
+    @users = @users.page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+      format.csv {
+        send_data all_users.to_csv
+      }
+    end
+  end
+
   def cdj_show
   end
 
